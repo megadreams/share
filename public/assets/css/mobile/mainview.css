@@ -1,0 +1,49 @@
+
+/* スクロールページ */
+.records {
+        overflow: scroll;
+        height:400px;
+}
+
+.records a {
+        color:black;
+}
+/* ユーザ名に対する表示 */
+.user-record {
+        height: 50px;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        box-shadow:0 1px 0 rgba(255,255,255,0.3);
+        padding: 5px;
+        margin: 5px 0px;
+}
+
+.user-img {
+        width:20%;
+}
+.user-name {
+        width:60%;
+        text-align:left;
+        line-height: 45px;
+}
+
+.user-status {
+        width:20%;
+
+}
+
+.status-view {
+    padding: 0px 5px;
+    text-align:left;
+}
+
+.status-on {
+        background:orange;
+        border-radius:10px;
+        color:black;
+        font-weight:bold;
+}
+
+.status-off {
+        backgrond:gray;
+        color: #808080;
+}

@@ -1,0 +1,86 @@
+/* 共通で利用*/
+body {
+        width:100%;
+        margin:0px;
+        padding:0px;
+        text-align:center;
+}
+
+/* 回り込み設定 */ 
+.float{
+        float:left;
+}
+
+.float-area:after {
+          content: ""; 
+          display: block; 
+          height: 0; 
+          font-size:0;	
+          clear: both; 
+          visibility:hidden;
+}
+
+/* 余白設定 */
+.p5  { padding: 5px;}
+.p10 { padding:10px;}
+.p15 { padding:15px;}
+
+
+
+
+
+
+
+/* ページヘッダー*/
+.header {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #b4ddfe), color-stop(1.00, #0d4996));
+        background: -webkit-linear-gradient(#b4ddfe, #0d4996);
+        background: -moz-linear-gradient(#b4ddfe, #0d4996);
+        background: -o-linear-gradient(#b4ddfe, #0d4996);
+        background: -ms-linear-gradient(#b4ddfe, #0d4996);
+        background: linear-gradient(#b4ddfe, #0d4996);
+
+        height:44px;
+        inner-height:40px;
+        color:white;
+}
+
+h1 {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 40px;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+}
+
+
+/* フッターボタン */
+.footer-btn {
+        float:left;
+        width:24%;
+        height:70px;
+        border:1px solid gray;
+        padding:0px;
+        margin:0px;
+        color:white;
+
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #303030), color-stop(1.00, #000));
+        background: -webkit-linear-gradient(#303030, #000);
+        background: -moz-linear-gradient(#303030, #000);
+        background: -o-linear-gradient(#303030, #000);
+        background: -ms-linear-gradient(#303030, #000);
+        background: linear-gradient(#303030, #000);
+
+}
+
+.footer-active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #272727), color-stop(1.00, #989898));
+    background: -webkit-linear-gradient(#272727, #989898);
+    background: -moz-linear-gradient(#272727, #989898);
+    background: -o-linear-gradient(#272727, #989898);
+    background: -ms-linear-gradient(#272727, #989898);
+    background: linear-gradient(#272727, #989898);
+
+
+        opacity:1;
+}
