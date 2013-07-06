@@ -48,6 +48,5 @@ if (file_exists(DOCROOT.'/../.dev') || file_exists(DOCROOT.'/.dev')) {
     define('ENVIRONMENT', ENVIRONMENT_PRODUCTION);
 }
 
-var_dump(ENVIRONMENT);
 // Initialize the framework with the config file.
 Fuel::init('config.php');
