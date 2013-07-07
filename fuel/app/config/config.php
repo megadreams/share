@@ -271,7 +271,7 @@ return array(
 		 * );
 		 */
 		 'packages'  => array(
-		 	//'orm',
+		 	'orm',
 		 ),
 
 		/**
@@ -297,7 +297,9 @@ return array(
 		 * add it like 'session' => 'auth'.
 		 * If you don't want the config in a group use null as groupname.
 		 */
-		'config'  => array(),
+		'config'  => array(
+                    'contents' => null,
+                ),
 
 		/**
 		 * Language files to autoload

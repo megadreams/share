@@ -2,6 +2,14 @@
 
 class Model_User_Profile extends \Orm\Model
 {
+    public static $_table_name = 'user_profile';
+    
+    //ほかのテーブルで使用されている場合
+    protected static $_has_many = array(
+//        'lend_and_borrow_mng',
+    );
+
+
     protected static $_properties = array(
         'id',
         'user_name',

@@ -21,7 +21,7 @@ class Controller_Common extends \Controller_Template {
     
     
     public function before() {
-  
+        
         $this->lib_util         = new Lib_Util();
         
 
@@ -35,7 +35,10 @@ class Controller_Common extends \Controller_Template {
         //親クラスのbeforeを呼び出して, $this->templateを使えるようにしてもらう
         parent::before();
         
+        $this->view_data['base_url'] = \Uri::Base() . 'contents/';
         
+        //リファラーの取得
+        $this->view_data['referer'] = \Input::referrer();
         
         $this->seg = \Uri::segments();
         // 認証時は以下の処理は行わない
@@ -55,8 +58,7 @@ class Controller_Common extends \Controller_Template {
         $this->user_profile = new Lib_UserProfile($this->model_wrap, $this->user_profile_id);
            
         
-        
-        
+
     }
 
 

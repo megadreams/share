@@ -11,9 +11,8 @@ class Lib_Modelwrap{
     public function call($model_name, $function_name, $arg1=null, $arg2=null){
 
         try {
-
             if($model_name === 'DB'){
-                $model_data = DB::query($arg1)->execute();
+                $model_data = \DB::query($arg1)->execute();
             }elseif($function_name === 'count'){
                 if($arg1 === null){
                     $model_data = $model_name::$function_name();

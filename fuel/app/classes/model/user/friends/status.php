@@ -1,7 +1,8 @@
 <?php
 
-class Model_User_Friends extends \Orm\Model
+class Model_User_Friends_Status extends \Orm\Model
 {
+    public static $_table_name = 'user_friends_status';    
     protected static $_properties = array(
         'id',
         'user_id',

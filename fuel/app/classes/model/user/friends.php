@@ -2,6 +2,7 @@
 
 class Model_User_Friends extends \Orm\Model
 {
+    public static $_table_name = 'user_friends';    
     protected static $_properties = array(
         'id',
         'user_id',

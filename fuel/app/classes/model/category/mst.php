@@ -2,6 +2,13 @@
 
 class Model_Category_Mst extends \Orm\Model
 {
+    public static $_table_name = 'category_mst'; 
+    
+    //ほかのテーブルに参照されている場合
+    protected static $_has_many = array(
+        'lend_and_borrow_mng',
+    );
+        
     protected static $_properties = array(
         'id',
         'category_name',

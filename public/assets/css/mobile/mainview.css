@@ -1,12 +1,52 @@
 
+/* ページヘッダー*/
+.header {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #b4ddfe), color-stop(1.00, #0d4996));
+        background: -webkit-linear-gradient(#b4ddfe, #0d4996);
+        background: -moz-linear-gradient(#b4ddfe, #0d4996);
+        background: -o-linear-gradient(#b4ddfe, #0d4996);
+        background: -ms-linear-gradient(#b4ddfe, #0d4996);
+        background: linear-gradient(#b4ddfe, #0d4996);
+
+        height:44px;
+        inner-height:40px;
+        color:white;
+}
+
+h1 {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 40px;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+}
+
+.header-back-btn {
+    width:20%;
+    color:white;
+}
+.header-cansel {
+    width:20%;
+}
+.head-title {
+    width:60%;
+}
+.header-pre-btn {
+    visibility : hidden;
+    width:20%;
+}
+
+
+
+
 /* スクロールページ */
 .records {
-        overflow: scroll;
-        height:400px;
+    overflow: scroll;
+    height:400px;
 }
 
 .records a {
-        color:black;
+    color:black;
 }
 /* ユーザ名に対する表示 */
 .user-record {
@@ -17,18 +57,20 @@
         margin: 5px 0px;
 }
 
-.user-img {
-        width:20%;
+.recode-left {
+    width:20%;
+    text-align:left;
 }
-.user-name {
+
+.recode-center {
         width:60%;
         text-align:left;
         line-height: 45px;
 }
 
-.user-status {
-        width:20%;
-
+.recode-right {
+    width:20%;
+    text-align:left;
 }
 
 .status-view {
@@ -37,13 +79,38 @@
 }
 
 .status-on {
-        background:orange;
-        border-radius:10px;
-        color:black;
-        font-weight:bold;
+    background:orange;
+    border-radius:10px;
+    color:black;
+    font-weight:bold;
 }
 
 .status-off {
-        backgrond:gray;
-        color: #808080;
+    backgrond:gray;
+    color: #808080;
+}
+
+
+
+/* 新規登録画面 */
+/* 全体フロー管理 */
+.create-view {
+    overflow: hidden;
+    height:350px;    
+}
+
+.create-status {
+    height:50px;       
+}
+
+
+/* 新規登録ステータス管理 */
+.index-status {
+    backgrond:gray;
+    color: #808080;    
+}
+
+.status-active {
+    color:black;
+    font-size:18px;
 }

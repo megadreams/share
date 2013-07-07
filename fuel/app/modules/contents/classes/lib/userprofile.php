@@ -12,24 +12,35 @@ class Lib_Userprofile {
     
     
     public function __construct($model_wrap, $user_id) {
-        $test = new \stdClass();
-        $test->id = $user_id;
-        $test->user_name = '藤原　';
-        return $test;
-        
-        $this->model_wrap = $model_wrap;
 
+        $this->model_wrap = $model_wrap;
         $user_profile = $this->model_wrap->call('Model_User_Profile', 'find', 'first', array(
             'where' => array(
                 array('id', '=', $user_id)
             )
         ));
         
-        $user_profile->user_id = $user_id;
-        return $user_profile;
+        $this->user_id   = $user_id;
+
     }
     
-    
+    public function getFriends() {
+        $sql  = ' SELECT up.id, up.user_name FROM user_friends uf';
+        $sql .= ' INNER JOIN user_profile up on up.id = uf.friend_user_id';
+        $sql .= ' WHERE ';
+        $sql .= '  user_id = ' . $this->user_id;
+
+        $user_friends = $this->model_wrap->call('DB', 'query', $sql);
+        
+
+        
+        $frind_list = array();
+        foreach ($user_friends as $friend) {
+            $frind_list[$friend['id']] = $friend;
+        }
+        
+        return $frind_list;
+    }
 
     /*
      * Facebookのユーザ情報を登録する
