@@ -6,7 +6,7 @@
 
 namespace Contents;
 
-class Controller_Top extends Controller_Common
+class Controller_Setting extends Controller_Common
 {
 
     /**
@@ -17,7 +17,8 @@ class Controller_Top extends Controller_Common
      */
     public function action_index()
     {
-        \Response::redirect('contents/auth/');
+        
+        $this->viewWrap('setting/index', '設定');
     }
 
 }

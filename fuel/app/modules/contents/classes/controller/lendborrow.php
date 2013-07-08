@@ -8,12 +8,12 @@ namespace Contents;
 
 class Controller_lendborrow extends Controller_Common
 {
-
     /**
      * 貸し借り管理を人別に表示する
      */
     public function action_top()
     {
+
         //友達情報を取得する
         $user_friends = $this->user_profile->getFriends();
         

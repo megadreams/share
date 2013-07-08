@@ -13,6 +13,8 @@ class Model_User_Profile extends \Orm\Model
     protected static $_properties = array(
         'id',
         'user_name',
+        'facebook_user_id',
+        'img_url',
         'created_at',
         'updated_at'
     );

@@ -27,6 +27,10 @@ define('ENVIRONMENT_DEVELOPMENT', 'development');
 define('ENVIRONMENT_TESTING'    , 'testing');
 define('ENVIRONMENT_PRODUCTION' , 'production');
 
+//認証PF
+define('FACEBOOK', 'facebook');
+define('TWITTER' , 'twitter');
+
 
 /**
  * Your environment.  Can be set to any of the following:

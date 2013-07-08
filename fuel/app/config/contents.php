@@ -23,5 +23,8 @@ return array(
             1 => '返した'
         ),
         
-    )
+    ),
+    
+    'str_replace' => '[@user_id]',
+    
 );

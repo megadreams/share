@@ -299,6 +299,7 @@ return array(
 		 */
 		'config'  => array(
                     'contents' => null,
+                    'facebook' => null,
                 ),
 
 		/**
