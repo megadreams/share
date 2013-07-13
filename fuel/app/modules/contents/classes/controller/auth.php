@@ -15,7 +15,9 @@ class Controller_auth extends Controller_Common
         //親クラスのbeforeを呼び出して, $this->templateを使えるようにしてもらう
         parent::before();
                
-
+        //初回ログイン画面の場合紹介画面を強制的に流す
+        //モーダルビューで表示
+        
     }
     
     

@@ -9,7 +9,7 @@ class Model_Lend_And_Borrow_Mng extends \Orm\Model
     
     //ほかのテーブルに参照されている場合
     protected static $_has_many = array(
-//        'user_profile',
+        'lend_and_borrow_sendurl',
     );
     
     protected static $_properties = array(

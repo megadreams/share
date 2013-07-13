@@ -28,7 +28,7 @@ class Controller_Welcome extends Controller_Template
 	 * @access  public
 	 * @return  Response
 	 */
-	public function action_index()
+        public function action_index()
 	{
 		return Response::forge(View::forge('welcome/index'));
 	}
@@ -53,6 +53,8 @@ class Controller_Welcome extends Controller_Template
 	 */
 	public function action_404()
 	{
+                echo 'error';
+                exit();
 		return Response::forge(ViewModel::forge('welcome/404'), 404);
 	}
 }

@@ -1,5 +1,5 @@
     <header class="header float-area">
-        <div class="head-left-btn float">
+        <div class="head-left-btn cansel-btn float">
             キャンセル
         </div>
         <div class="head-title float">
@@ -217,7 +217,7 @@ $(function() {
     });
     
     //キャンセルボタン
-    $('.header-cansel').click(function() {
+    $('.cansel-btn').click(function() {
         if (confirm('登録をやめますか？')) {
             location.href ="<?php echo $view_data['base_url'] . 'lendborrow/top'; ?>";
         }

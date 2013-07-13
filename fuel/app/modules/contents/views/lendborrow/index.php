@@ -24,11 +24,11 @@
                             <span><?php echo $records['user_info']['user_name']; ?></span>
                         </div>
                         <div class="recode-right w20p float">
-                            <div class="status-view <?php echo ($records['lend'] > 0)? 'status-on':'status-off'; ?>">
-                                貸　<span><?php echo $records['lend']; ?></span>
+                            <div class="status-view">
+                                貸　<span class="<?php echo ($records['lend'] > 0)? 'status-on':'status-off'; ?>"><?php echo $records['lend']; ?></span>
                             </div>
-                            <div class="status-view <?php echo ($records['borrow'] > 0)? 'status-on':'status-off'; ?>">
-                                借　<span><?php echo $records['borrow']; ?></span>
+                            <div class="status-view">
+                                借　<span class="<?php echo ($records['borrow'] > 0)? 'status-on':'status-off'; ?>"><?php echo $records['borrow']; ?></span>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,6 @@
                 現在、貸し借りしている情報はありません。
             </div>
      
-            <br>
-            ・FB友達追加
             <br>
             ・FBフィードもしくはメッセージの送信
             <br>

@@ -81,15 +81,22 @@ h1 {
 }
 
 .status-view {
+    margin-top:5px;
     padding: 0px 5px;
     text-align:left;
 }
 
 .status-on {
-    background:orange;
-    border-radius:10px;
+background: -webkit-gradient(radial, 50% 46%, 0, 50% 46%, 121, color-stop(1.00, #ff7400), color-stop(0.00, #ffa443));
+background: -webkit-radial-gradient(50% 46%, circle, #ffa443, #ff7400);
+background: -moz-radial-gradient(50% 46%, circle, #ffa443, #ff7400);
+background: -o-radial-gradient(50% 46%, circle, #ffa443, #ff7400);
+background: -ms-radial-gradient(50% 46%, circle, #ffa443, #ff7400);
+background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
+    border-radius:8px;
     color:black;
     font-weight:bold;
+    padding:5px;
 }
 
 .status-off {
@@ -161,3 +168,9 @@ h1 {
 .record-img {
     zoom:60%;
 }
+
+.lendborrow-nothing {
+    line-height: 300px;
+}
+
+/* 変更　削除ボタン*/

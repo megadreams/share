@@ -42,7 +42,7 @@ return array(
 	 *
 	 * Set this to 'index.php if you don't use URL rewriting
 	 */
-	// 'index_file' => false,
+//	 'index_file' => true,
 
 	// 'profiling'  => false,
 
@@ -216,17 +216,17 @@ return array(
 	/**
 	 * Routing settings
 	 */
-	// 'routing' => array(
+	'routing' => array(
 		/**
 		 * Whether URI routing is case sensitive or not
 		 */
-		// 'case_sensitive' => true,
+		'case_sensitive' => true,
 
 		/**
 		 *  Wether to strip the extension
 		 */
 		// 'strip_extension' => true,
-	// ),
+	),
 
 	/**
 	 * To enable you to split up your application into modules which can be
@@ -238,8 +238,8 @@ return array(
 	 * Paths MUST end with a directory separator (the DS constant)!
 	 */
         'module_paths' => array(
-            APPPATH.'modules'.DS
-	),
+            APPPATH.'modules'.DS,
+    ),
 
 	/**
 	 * To enable you to split up your additions to the framework, packages are

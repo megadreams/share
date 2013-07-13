@@ -63,7 +63,7 @@ class Controller_lendborrow extends Controller_Common
     /**
      * 貸し借りしている人の中でどんな貸し借りをしているかのリストを表示する
      */
-    public function action_list($your_user_id)
+    public function action_list($your_user_id, $status = 0)
     {
         
         //相手の情報を取得
@@ -78,6 +78,7 @@ class Controller_lendborrow extends Controller_Common
                 'where' => array(
                     array('lend_user_id', '=', $this->user_profile_id),
                     array('borrow_user_id', '=', $your_user_id),
+                    array('status', '=', $status),
                 ),
                 'related' => array('category_mst'),
             ));
@@ -88,6 +89,7 @@ class Controller_lendborrow extends Controller_Common
                 'where' => array(
                     array('lend_user_id', '=', $your_user_id),
                     array('borrow_user_id', '=', $this->user_profile_id),
+                    array('status', '=', $status),
                 ),
                 'related' => array('category_mst'),
             ));
@@ -102,7 +104,7 @@ class Controller_lendborrow extends Controller_Common
                 
         $this->view_data['records'] = $records;
 
-        $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さん');                
+        $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さんへ');                
     }
     
     /**
@@ -110,7 +112,7 @@ class Controller_lendborrow extends Controller_Common
      */
     public function action_detail($type, $lendborrow_mst_id)
     {
-        
+
         if ($type === 'lend') {
             $your_user_text = 'borrow_user_id';
         } else if ($type === 'borrow') {
@@ -121,7 +123,6 @@ class Controller_lendborrow extends Controller_Common
             echo 'エラー';
             exit();
         }
-        
          //貸している情報
         $sql  = ' SELECT mng.*, up.user_name, up.id as user_id, ca.category_name FROM lend_and_borrow_mng mng';
         $sql .= ' INNER JOIN user_profile up ON up.id = mng.' .  $your_user_text;
@@ -148,11 +149,11 @@ class Controller_lendborrow extends Controller_Common
         $edit         = \Input::post('edit');
         $delete       = \Input::post('delete');
         $your_user_id = \Input::post('your_user_id');
+        $mst_id   = \Input::post('id');
         
      
 
         if (isset($edit) === true){
-            $mst_id   = \Input::post('id');
             $status   = \Input::post('status');
             $memo    = \Input::post('memo');
             $money    = \Input::post('money');
@@ -178,7 +179,6 @@ class Controller_lendborrow extends Controller_Common
             }
             
         } else if (isset($delete) === true) {
-            $mst_id   = \Input::post('id');
             $sql  = 'DELETE FROM `lend_and_borrow_mng` WHERE `id` = ' . (int)$mst_id;
 
             try {
@@ -291,4 +291,17 @@ class Controller_lendborrow extends Controller_Common
         $this->viewWrap('lendborrow/create', '新規登録');    
         
     }
+    
+    public function action_send() {
+        $mst_id  = \Input::post('id');
+        $type    = \Input::post('type');
+
+        //通知用URLの発行
+        $access_key = $this->lib_util->getViewAccessKey($mst_id, $this->user_profile_id);
+        $this->view_data['url']       = \Uri::base() . "lendborrow/check/" . $access_key;
+        $this->view_data['send_info'] = true;
+        $this->action_detail($type, $mst_id);
+        return ;
+    }
+    
 }

@@ -155,3 +155,83 @@ footer {
 	background: url('https://dl.dropbox.com/u/59384927/jquery/HTML/MODAL/leanmodal/modal_close.png');
 	z-index: 2;
 }
+
+/* タブ */
+.tab-btn {
+    color:gray;
+    font-size:12px;
+    background:rgba(100,100,100,0.2);
+    height:40px;
+    line-height: 40px;
+    cursor: pointer;
+    border-bottom:1px solid rgba(100,100,100,0.5);
+    
+}
+.tab-on {
+    color:black;
+    font-size:16px;
+    background:rgba(255,255,255,0);
+    border-bottom:0px;
+}
+
+.lendborrow-table {
+    width:80%;
+    margin:5px auto;
+    border-spacing: 0;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+         -o-border-radius: 6px;
+            border-radius: 6px;
+    box-shadow: 0 1px 1px #CCC;    
+}
+.lendborrow-table th{
+    padding:5px 0px;
+    border-bottom:solid 1px #CCC;
+    border-right:solid 1px #CCC;
+    
+    background:#e3dcd5;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    color:#69655c;    
+}
+.lendborrow-table td {
+    padding:5px 0px;
+    background:#FFF;
+    border-bottom:solid 1px #CCC;
+    border-right:solid 1px #CCC;
+}
+
+
+.btn {
+    margin:5px;
+    padding:5px 10px;
+}
+.btn-blue {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2c7bff), color-stop(1.00, #021ecd));
+    background: -webkit-linear-gradient(#2c7bff, #021ecd);
+    background: -moz-linear-gradient(#2c7bff, #021ecd);
+    background: -o-linear-gradient(#2c7bff, #021ecd);
+    background: -ms-linear-gradient(#2c7bff, #021ecd);
+    background: linear-gradient(#2c7bff, #021ecd);
+    color:white;
+}
+
+.btn-red {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #ff5a00), color-stop(1.00, #cd0000));
+    background: -webkit-linear-gradient(#ff5a00, #cd0000);
+    background: -moz-linear-gradient(#ff5a00, #cd0000);
+    background: -o-linear-gradient(#ff5a00, #cd0000);
+    background: -ms-linear-gradient(#ff5a00, #cd0000);
+    background: linear-gradient(#ff5a00, #cd0000);
+    color:white;
+}
+.btn-green {
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #3d8c39), color-stop(1.00, #203625));
+background: -webkit-linear-gradient(#3d8c39, #203625);
+background: -moz-linear-gradient(#3d8c39, #203625);
+background: -o-linear-gradient(#3d8c39, #203625);
+background: -ms-linear-gradient(#3d8c39, #203625);
+background: linear-gradient(#3d8c39, #203625);
+
+    color:white;
+}
