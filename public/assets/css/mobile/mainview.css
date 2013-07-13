@@ -21,6 +21,17 @@ h1 {
         -webkit-margin-after: 0em;
 }
 
+.head-title {
+    width:60%;
+}
+.head-left-btn {
+    width:20%;    
+}
+.head-right-btn {
+    width:20%;    
+}
+
+
 .header-back-btn {
     width:20%;
     color:white;
@@ -28,15 +39,13 @@ h1 {
 .header-cansel {
     width:20%;
 }
-.head-title {
-    width:60%;
-}
-.header-pre-btn {
+.create-pre-btn {
     visibility : hidden;
-    width:20%;
 }
 
-
+.status {
+    font-size:11px;
+}
 
 
 /* スクロールページ */
@@ -50,26 +59,24 @@ h1 {
 }
 /* ユーザ名に対する表示 */
 .user-record {
-        height: 50px;
+        height: 55px;
         border-bottom: 1px solid rgba(0,0,0,0.2);
         box-shadow:0 1px 0 rgba(255,255,255,0.3);
         padding: 5px;
         margin: 5px 0px;
 }
 
+
 .recode-left {
-    width:20%;
     text-align:left;
 }
 
 .recode-center {
-        width:60%;
         text-align:left;
         line-height: 45px;
 }
 
 .recode-right {
-    width:20%;
     text-align:left;
 }
 
@@ -100,17 +107,57 @@ h1 {
 }
 
 .create-status {
-    height:50px;       
+    height: 30px;
+    border-bottom: 1px dashed black;
 }
 
 
 /* 新規登録ステータス管理 */
 .index-status {
-    backgrond:gray;
     color: #808080;    
+    font-size: 14px;
+    cursor:pointer;
 }
 
 .status-active {
     color:black;
     font-size:18px;
+}
+
+.create-friend-list {
+    overflow: scroll;
+    height: 215px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #808080;
+    margin: 0px 5px;
+}
+.create-record {
+        height: 30px;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        box-shadow:0 1px 0 rgba(255,255,255,0.3);
+        padding: 5px;
+        margin: 5px 0px;    
+}
+
+.add-friend-area {
+    margin-top: 20px;    
+}
+
+
+.create-input-box {
+    margin: 10px 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #808080;
+    color: gray;
+    text-align: center;
+}
+.input-box {
+    margin: 5px;
+}
+
+.record-img {
+    zoom:60%;
 }

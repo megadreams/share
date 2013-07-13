@@ -1,12 +1,14 @@
     <header class="header ">
-        <div class="header-back-btn float">
+        <div class="head-left-btn float">
             　
         </div>
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
-        <div class="header-pre-btn float">
-            
+        <div class="head-right-btn float">
+            <a href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
+                <?php echo \Asset::img('vender/png/32x32/Plus.png'); ?>
+            </a>
         </div>
     </header>
 
@@ -15,13 +17,13 @@
             <?php foreach ($view_data['records'] as $records): ?>
                 <a href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $records['user_info']['id'];?>">
                     <div class="user-record float-area">
-                        <div class="recode-left float">
+                        <div class="recode-left w20p float">
                             <img src="<?php echo $records['user_info']['img_url'];?>" alt="プロフィール画像">
                         </div>
-                        <div class="recode-center float">
+                        <div class="recode-center w60p float">
                             <span><?php echo $records['user_info']['user_name']; ?></span>
                         </div>
-                        <div class="recode-right float">
+                        <div class="recode-right w20p float">
                             <div class="status-view <?php echo ($records['lend'] > 0)? 'status-on':'status-off'; ?>">
                                 貸　<span><?php echo $records['lend']; ?></span>
                             </div>
@@ -33,17 +35,24 @@
                 </a>
             <?php endforeach; ?>
         <?php else: ?>
-            現在、貸し借りしている情報はありません。
             <div>
-                <a href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
-                    新規登録
-                </a>
-            </div>            
+                現在、貸し借りしている情報はありません。
+            </div>
+     
+            <br>
+            ・FB友達追加
+            <br>
+            ・FBフィードもしくはメッセージの送信
+            <br>
+            ・リンクで参照可能な貸し借りペーじ
+            <br>
+            ・セッションの細かい設定
+            <br>
+            ・全体的なデザイン
+            <br>
+            ・ツイッターログイン
+
+            
+            
         <?php endif;?>
     </section>
-
-            <div>
-                <a href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
-                    新規登録
-                </a>
-            </div>            

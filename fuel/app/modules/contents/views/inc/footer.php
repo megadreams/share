@@ -1,4 +1,4 @@
-        <footer>
+        <footer class="<?php echo ($agent['platform'] === 'iOS')?'iphone-footer':'';?>">
             <div class="float-area">
                 <a href="<?php echo \Uri::Base() . 'contents/' . 'lendborrow/top/'?>">
                     <div class="footer-btn footer-active">

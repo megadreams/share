@@ -24,7 +24,6 @@ class Controller_lendborrow extends Controller_Common
                 ),
             ));
         
-        
         //借りている情報
         $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
                 'where' => array(
@@ -200,6 +199,7 @@ class Controller_lendborrow extends Controller_Common
      * 新規登録画面
      */
     public function action_create() {
+        $post = \Input::post();
         $create         = \Input::post('create');
         
         if ($create !== null) {
@@ -209,8 +209,53 @@ class Controller_lendborrow extends Controller_Common
             $date         = \Input::post('date');
             $money        = \Input::post('money');
             $limit        = \Input::post('limit');
-            $memo         = \Input::post('memo');     
+            $memo         = \Input::post('memo');
+            $add_your_user_name = \Input::post('add_your_user_name');
+            $user_friend_add_pf = \Input::post('user_friend_add_pf'); 
             
+            
+            //友達リストが他PFからの取得の場合その友達ユーザの登録を行う
+            if ($user_friend_add_pf !== 'default') {
+                //FacebookIDが既に登録されているか？
+                $other_user = $this->model_wrap->call('Model_User_Profile','find','first', array(
+                    'where' => array(
+                        array('facebook_user_id', '=', $your_user_id),
+                    ),
+                ));
+                
+                if (empty($other_user)) {
+                    //ユーザの登録
+                    $ins_data = array(
+                        'user_name'        => $add_your_user_name,
+                        'facebook_user_id' => $your_user_id,
+                        'img_url'          => 'https://graph.facebook.com/' . $your_user_id . '/picture',
+                    );
+                    $user_data = $this->model_wrap->getModelInstance('Model_User_Profile',$ins_data);
+                    $user_data->save();
+                    
+                    $your_user_id = $user_data->id;
+                    
+                    //友達登録するか？
+                    $friend_ins_data = array(
+                        'user_id' => $this->user_profile_id,
+                        'friend_user_id' => $your_user_id
+                    );
+                    $friend_data1 = $this->model_wrap->getModelInstance('Model_User_Friends',$friend_ins_data);
+                    
+                    $friend_ins_data = array(
+                        'user_id' => $your_user_id,
+                        'friend_user_id' => $this->user_profile_id
+                    );
+                    $friend_data2 = $this->model_wrap->getModelInstance('Model_User_Friends',$friend_ins_data);
+                    
+                    $friend_data1->save();
+                    $friend_data2->save();
+                    
+                    
+                } else {
+                    $your_user_id = $other_user->id;
+                }
+            }
             $ins_data = array();
             if ($type === 'lend') {
                 $ins_data['lend_user_id']   = $this->user_profile_id;
@@ -222,7 +267,7 @@ class Controller_lendborrow extends Controller_Common
                 $ins_data['borrow_user_id'] = $this->user_profile_id;
             }
             $ins_data['category_mst_id'] = $category;
-            $ins_data['date']     = $date;
+            $ins_data['date']     = strtotime($date);
             $ins_data['money']    = $money;
             $ins_data['limit']    = $limit;
             $ins_data['memo']     = $memo;
@@ -235,7 +280,13 @@ class Controller_lendborrow extends Controller_Common
             \Response::redirect($this->view_data['base_url'] . 'lendborrow/list/' .$your_user_id);
             
         }
+        //友達情報の取得
+        //友達情報を取得する
+        $this->view_data['user_friends'] = $this->user_profile->getFriends();
         
+        
+        //カテゴリーを取得する
+        $this->view_data['category'] = $this->model_wrap->call('Model_Category_Mst', 'find', 'all');        
 
         $this->viewWrap('lendborrow/create', '新規登録');    
         

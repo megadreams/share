@@ -5,6 +5,7 @@ interface Lib_Strategy_interface {
     public function getLogoutUrl();
     public function getUserProfile();
     public function getuserImage($user_id);
+    public function getUserFriends();
 }
 
 class Lib_Strategy {
@@ -31,5 +32,7 @@ class Lib_Strategy {
     public function getuserImage($user_id) {
         return null;
     }
-        
+    public function getUserFriends() {
+        return array();
+    }        
 }

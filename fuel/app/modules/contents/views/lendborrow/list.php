@@ -20,30 +20,35 @@
         <?php foreach ($view_data['records'][$type] as $records): ?>
             <a href="<?php echo $view_data['base_url'] . 'lendborrow/detail/' . $type . '/' .$records->id;?>">
                 <div class="user-record float-area">
-                    <div class="recode-left float">
+                    <div class="recode-left w30p float">
                         <span class="newline">
-                            <?php echo date('Y-m-d', $records->date); ?>
+                            <?php echo date('Y年', $records->date); ?>
                         </span>  
                         <span class="newline">
-                            <?php echo date('H:i:s', $records->date); ?>
+                            <?php echo date('n月j日', $records->date); ?>
                         </span>  
+
                     </div>
                     
-                    <div class="recode-center float">
+                    <div class="recode-center w50p float">
+
                         <span class="newline">
+                            <span style="zoom:30%;">                       
+                                <?php echo Asset::img('category/' . $records['category_mst_id'] . '.png'); ?>
+                            </span>  
                             <?php echo $records->category_mst->category_name; ?>　:　<?php echo $records->money; ?>円
                         </span>
                         <span class="newline">
                             <?php echo $records->memo; ?>
                         </span>  
                     </div>
-                    <div class="recode-right float">
-                            <span>
-                                状態
-                            </span>
-                            <span class="newline">
-                                <?php echo $view_data['lendborrow_status'][$type][$records->status]; ?></span>
-                            </span>
+                    <div class="recode-right w20p float">
+                        <span>
+                            状態
+                        </span>
+                        <span class="status newline">
+                            <?php echo $view_data['lendborrow_status'][$type][$records->status]; ?></span>
+                        </span>
                     </div>
                 </div>
             </a>

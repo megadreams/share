@@ -55,7 +55,7 @@ class Controller_Common extends \Controller_Template {
         if ($this->user_profile_id === null) {
             \Response::redirect($this->view_data['base_url'] . 'auth/');
         }
-        
+        $this->view_data['user_profile_id'] = $this->user_profile_id;
         $this->user_profile = new Lib_UserProfile($this->model_wrap, $this->user_profile_id);
            
         
@@ -76,7 +76,7 @@ class Controller_Common extends \Controller_Template {
         //Viewのtemplate.phpにそれぞれ渡す
         $this->template->content = \View::forge($path,  array('view_data' => $this->view_data, 'title' => $title));        
         if ($this->seg[1] !== 'auth') {
-            $this->template->footer  = \View::forge('inc/footer',  array('view_data' => $this->view_data));
+            $this->template->footer  = \View::forge('inc/footer',  array('view_data' => $this->view_data, 'agent' => $this->agent));
         } else {
             $this->template->footer  = null;
         }

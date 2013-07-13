@@ -25,7 +25,7 @@ class Lib_Userprofile {
     }
     
     public function getFriends() {
-        $sql  = ' SELECT up.id, up.user_name FROM user_friends uf';
+        $sql  = ' SELECT up.* FROM user_friends uf';
         $sql .= ' INNER JOIN user_profile up on up.id = uf.friend_user_id';
         $sql .= ' WHERE ';
         $sql .= '  user_id = ' . $this->user_id;
