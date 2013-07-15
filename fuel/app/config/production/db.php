@@ -8,7 +8,7 @@ return array(
         'connection'  => array(
             'dsn'        => 'mysql:host=localhost;dbname=share',
             'username'   => 'share',
-            'password'   => 'share',
+            'password'   => 'sharepass',
         ),
     ),
 );
