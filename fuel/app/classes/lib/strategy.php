@@ -6,6 +6,7 @@ interface Lib_Strategy_interface {
     public function getUserProfile();
     public function getuserImage($user_id);
     public function getUserFriends();
+    public function sendMessage($message, $url);    
 }
 
 class Lib_Strategy {
@@ -34,5 +35,8 @@ class Lib_Strategy {
     }
     public function getUserFriends() {
         return array();
-    }        
+    }
+    public function sendMessage($message, $url) {
+        return false;
+    }  
 }

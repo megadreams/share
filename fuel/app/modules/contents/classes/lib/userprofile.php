@@ -9,6 +9,7 @@ class Lib_Userprofile {
     private $model_wrap;
     private $user_id;
     
+    public $user_name;
     
     
     public function __construct($model_wrap, $user_id) {
@@ -21,7 +22,7 @@ class Lib_Userprofile {
         ));
         
         $this->user_id   = $user_id;
-
+        $this->user_name = $user_profile->user_name;
     }
     
     public function getFriends() {

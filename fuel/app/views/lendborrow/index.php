@@ -55,7 +55,7 @@
             貸借管理アプリにログインして詳細を確認     
         </span>
         <div>
-            <a href="<?php echo Uri::base() . 'contents/auth/';?>">ログイン画面へ</a>
+            <a href="<?php echo Uri::base() . 'contents/auth/';?>" target="_black">ログイン画面へ</a>
         </div>
     </div>    
 

@@ -173,4 +173,7 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
     line-height: 300px;
 }
 
-/* 変更　削除ボタン*/
+.message-area {
+    margin: 10px 0px;
+    padding: 5px;
+}

@@ -32,35 +32,29 @@ class Lib_Util {
     //通知用アクセスキーの発行
     public function getViewAccessKey($mst_id, $user_profile_id) {
         $model_wrap = new Lib_Modelwrap();
-        //貸し借り情報を取得
-        $send_data = $model_wrap->call('Model_Lend_And_Borrow_Mng','find','first',array(
-                'where' => array(
-                    array('id', '=', $mst_id),
-                ),
-            ));
-        
-        if (empty($send_data)) {
+
+    
+        //通知用テーブルからURLがあるかどうかチェックする
+         $access_key = $model_wrap->call('Model_Lend_And_Borrow_Sendurl','find','first',array(
+            'where' => array(
+                array('lend_and_borrow_mng_id', '=',$mst_id),
+            ),
+        ));   
+
+         if (empty($access_key)) {
+
+            //アクセスキーがかぶるようなら一度DBチェック後あれば最後尾に１桁追加する
+            $insert_data = array(
+                'lend_and_borrow_mng_id' => $mst_id,
+                'access_key'             => $user_profile_id . time(),
+            );
+            $access_key = $model_wrap->getModelInstance('Model_Lend_And_Borrow_Sendurl',$insert_data);                 
+            $access_key->save();
             
-        } else {
-            //通知用テーブルからURLがあるかどうかチェックする
-             $access_key = $model_wrap->call('Model_Lend_And_Borrow_Sendurl','find','first',array(
-                'where' => array(
-                    array('lend_and_borrow_mng_id', '=', $send_data->id),
-                ),
-            ));   
-             
-             if (empty($access_key)) {
-                 
-                //アクセスキーがかぶるようなら一度DBチェック後あれば最後尾に１桁追加する
-                $insert_data = array(
-                    'lend_and_borrow_mng_id' => $send_data->id,
-                    'access_key'             => $user_profile_id . time(),
-                );
-                $access_key = $model_wrap->getModelInstance('Model_Lend_And_Borrow_Sendurl',$insert_data);                 
-                $access_key->save();
-             } 
-             return $access_key->access_key;
-        }
+            
+         } 
+         return $access_key->access_key;
+
     }
     
     

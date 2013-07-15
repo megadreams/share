@@ -70,19 +70,59 @@
                 <button class="btn btn-red" type="submit" name="delete">削除</button>
             </div>
         </form>
-        <?php if (isset($view_data['send_info']) === false):?>
-            <form action="<?php echo $view_data['base_url'] . 'lendborrow/send';?>" method="POST">        
-                <input type="hidden" name="id"   value="<?php echo $view_data['lendborrow_data']['id'];?>">
-                <input type="hidden" name="type" value="<?php echo $view_data['type'];?>">
-                <button class="btn btn-green" type="submit" name="edit">今すぐ通知</button>
-            </form>
-        <?php else:?>
-            <div class="message">
-                <?php echo $view_data['lendborrow_data']['user_name']; ?>さんに通知しました。
-                <span class="newline">
-                    下記URLの内容が送信されました。
-                    <a href="<?php echo $view_data['url'];?>" target="_blank"><?php echo $view_data['url'];?></a>
-                </span>
+        <?php /*
+            <?php if (isset($view_data['send_info']) === false):?>
+                <form action="<?php echo $view_data['base_url'] . 'lendborrow/send/facebook';?>" method="POST">        
+                    <input type="hidden" name="id"   value="<?php echo $view_data['lendborrow_data']['id'];?>">
+                    <input type="hidden" name="type" value="<?php echo $view_data['type'];?>">
+                    <button class="btn btn-green" type="submit" name="send">今すぐ通知</button>
+                </form>
+            <?php else:?>
+                <div class="message">
+                    <?php echo $view_data['lendborrow_data']['user_name']; ?>さんに通知しました。
+                    <span class="newline">
+                        下記URLの内容が送信されました。
+                        <a href="<?php echo $view_data['url'];?>" target="_blank"><?php echo $view_data['url'];?></a>
+                    </span>
+                </div>
+            <?php endif;?>
+         */ ?>
+        
+        <div class="message-area">
+            上記内容を以下のアプリで通知できます。
+            <div class="m10 p5">
+                <script type="text/javascript" src="http://media.line.naver.jp/js/line-button.js?v=20130508" ></script>
+                <script type="text/javascript">
+                new jp.naver.line.media.LineButton({"pc":false,"lang":"ja","type":"a","text":"<?php echo $view_data['message'];?>","withUrl":false});
+                </script>
             </div>
-        <?php endif;?>
+        </div>
+        
     </section>
+
+
+<script>
+$(function(){
+    $('.btn').click(function() {
+
+        var name = this.name;
+        var text = '';
+
+        if (name === 'edit') {
+            text = '変更してよろしいですか？';
+        } else if (name === 'delete') {
+            text = '本当に削除してもよろしいですか？';
+        } else {
+            text = 'Facebookでタイムラインに投稿いたします。よろしいですか？';
+        }
+        
+        if (confirm(text)) {
+            return true;
+        } else {
+            return false;
+        }
+        return false;
+    });
+});    
+</script>
+    

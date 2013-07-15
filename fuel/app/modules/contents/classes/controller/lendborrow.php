@@ -139,6 +139,13 @@ class Controller_lendborrow extends Controller_Common
         $this->view_data['type'] = $type;
         //状態を取得
         $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
+
+        
+        //LINEで送る
+        $access_key = $this->lib_util->getViewAccessKey($lendborrow_mst_id, $this->user_profile_id);       
+        $url       = \Uri::base() . "lendborrow/check/" . $access_key;
+        $message = '【貸借管理】：' . $this->user_profile->user_name . 'さんが' . $this->view_data['lendborrow_data']['user_name'] . 'さんへの貸し借り情報を登録しました。詳細はこちら。' . $url;
+        $this->view_data['message'] = $message;
         
 
         $this->viewWrap('lendborrow/detail');          
@@ -292,14 +299,53 @@ class Controller_lendborrow extends Controller_Common
         
     }
     
-    public function action_send() {
+    
+    
+    /*
+     * 以下開発中
+     */
+    
+    public function action_send($platform) {
         $mst_id  = \Input::post('id');
+        
+        //送る人のタイプ
         $type    = \Input::post('type');
+        
+        if ($type === 'lend') {
+            //相手は借りている人
+            $colm = 'borrow_user_id';
+        } else {
+            //相手は借りている人
+            $colm = 'lend_user_id';
+        }
+        
+        
+        //貸し借り情報を取得
+        $sql  = ' SELECT lb.*, up.user_name as your_user_name from lend_and_borrow_mng lb';
+        $sql .= ' INNER JOIN user_profile up on lb.' . $colm .' = up.id'; 
+        $sql .= ' WHERE lb.id = ' . $mst_id; 
+        $send_data = $this->model_wrap->call('DB','sql',$sql);
+        
+        foreach ($send_data as $data) {
+            $mst_data = $data;
+        }
+        
 
         //通知用URLの発行
-        $access_key = $this->lib_util->getViewAccessKey($mst_id, $this->user_profile_id);
+        $access_key = $this->lib_util->getViewAccessKey($mst_id, $this->user_profile_id);       
         $this->view_data['url']       = \Uri::base() . "lendborrow/check/" . $access_key;
         $this->view_data['send_info'] = true;
+
+        $this->strategy = \Lib_Strategy::getInstance($platform);
+        
+        
+        
+        $message = $this->user_profile->user_name . 'さんが' . $mst_data['your_user_name'] . 'さんへの貸し借り情報を登録しました。詳細はこちら。<a href="' . $this->view_data['url'] . '">' . $this->view_data['url'] . '</a>';
+var_dump($message);
+exit();
+$login_url = $this->strategy->sendMessage($message, $this->view_data['url']);
+
+        
         $this->action_detail($type, $mst_id);
         return ;
     }

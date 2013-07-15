@@ -55,4 +55,23 @@ class Lib_Facebook_Strategy extends Lib_Strategy implements Lib_Strategy_interfa
         }
         return array('data' => $return_data, 'platform' => 'facebook');
     }
+    public function sendMessage($message, $url) {
+        //ウォールへ投稿
+        $result = $this->facebook->api("/me/feed", "post", array(
+                       "message" => '〜さんが〜に貸し借り登録をしました。詳細はこちら。',
+//                       "picture" => '',
+                       "link" => $url,
+                       "name" => 'リンク名',
+                       "caption" => '貸し借り管理アプリで楽々',
+                       "description" => 'リンクの説明文',
+//                       "source" => '動画URL',
+//                       "action" => json_encode(array(
+  //                                   "name" => 'アクションリンク名',
+    //                                 "link" => 'アクションリンクURL'))
+        ));        
+        var_dump($result);
+        exit();
+        return $result;
+    }      
+    
 }

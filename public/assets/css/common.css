@@ -30,6 +30,10 @@ font-size: 14px;
 .p10 { padding:10px;}
 .p15 { padding:15px;}
 
+.m5  { margin: 5px;}
+.m10 { margin:10px;}
+.m15 { margin:15px;}
+
 /* 改行 */
 .newline { 
     display:block;
