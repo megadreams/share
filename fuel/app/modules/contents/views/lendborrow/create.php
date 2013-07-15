@@ -70,10 +70,10 @@
                     <?php else: ?>
                         <div>
                             <span class="newline">
-                                現在アプリ内の友達はおりません。
+                                現在アプリ内の友達はいません。
                             </span>
                             <span class="newline">
-                                右上の友達を捜すボタンより検索してください。                            
+                                下のボタンより友達を検索してください。                            
                             </span>
                         </div>                
                     <?php endif;?>
