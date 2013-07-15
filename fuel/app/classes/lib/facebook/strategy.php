@@ -24,11 +24,14 @@ class Lib_Facebook_Strategy extends Lib_Strategy implements Lib_Strategy_interfa
     public function getUserProfile() {
         $user_data = $this->facebook->api('/me');
 
-        $return_data = array();        
-        $return_data['id'] = $user_data['id'];         //FB_ID
-        $return_data['user_name'] = $user_data['last_name'] . $user_data['first_name'];
+        if (isset($user_data['id'])) {
+            $return_data = array();        
+            $return_data['id'] = $user_data['id'];         //FB_ID
+            $return_data['user_name'] = $user_data['last_name'] . $user_data['first_name'];
 
-        return $return_data;
+            return $return_data;
+        }
+        return false;
     }        
     
     public function getuserImage($user_id) {

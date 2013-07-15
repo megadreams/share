@@ -41,6 +41,12 @@ class Controller_auth extends Controller_Common
         //ユーザ情報と名前を取得する
         $login_user_data = $this->strategy->getUserProfile();
         
+        //エラーチェック
+        if ($login_user_data === false) {
+            //エラーページへ
+            \Response::redirect(\Uri::base() . 'error/message/1');
+        }
+        
 
         //既に登録されているユーザかをチェックする
         $user_profile = $this->model_wrap->call('Model_User_Profile', 'find', 'first', array(

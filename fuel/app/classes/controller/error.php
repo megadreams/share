@@ -21,16 +21,25 @@
  */
 class Controller_Error extends Controller_Template
 {
+    
+    private $view_data;
+    
+    public function before() {
+        $this->template = 'template';
+        //親クラスのbeforeを呼び出して, $this->templateを使えるようにしてもらう
+        parent::before();
+   }
+    
+    /**
+     * The basic welcome message
+     *
+     * @access  public
+     * @return  Response
+     */
+    public function action_message($error_code)
+    {
 
-	/**
-	 * The basic welcome message
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
-        public function action_index()
-	{
-            echo 'error';
-            exit();
-	}
+    $this->template->content = \View::forge('error/message',  array('view_data' => $this->view_data, 'title' => '報告'));        
+
+    }
 }
