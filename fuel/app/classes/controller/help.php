@@ -17,5 +17,11 @@ class Controller_Help extends Controller_Template
         $this->template->content = \View::forge('help/index',  array('view_data' => $this->view_data, 'title' => 'お問い合わせ'));        
         
     }
-
+    
+    public function action_report()
+    {
+        
+        $this->template->content = \View::forge('help/report',  array('view_data' => $this->view_data, 'title' => '報告'));        
+        
+    }
 }

@@ -5,14 +5,34 @@
         </div>
     </header>    
 
-    <div>
-        お問い合わせ
-        カテゴリ
-        返信用メール
-        内容
+    <div class="help-area">
+        <a href="">
+            <div class="help-contents">
+                貸借管理について
+            </div>
+        </a>
     </div>
-    <div>
-        貸し借り管理アプリについて
-        個人情報の取り扱いについて
-    </div>
+    
+    <div class="help-area">        
+        <a href="<?php echo \Uri::base() . 'help/report'; ?>">
+            <div class="help-contents">
+                報告
+            </div>
+        </a>
+        <a href="">
+            <div class="help-contents">
+                利用規約
+            </div>
+        </a>
+        <a href="">
+            <div class="help-contents">
+                プライバシーポリシー
+            </div>
+        </a>
+        <a href="">
+            <div class="help-contents">
+                その他
+            </div>
+        </a>
+    </div>    
 </section>

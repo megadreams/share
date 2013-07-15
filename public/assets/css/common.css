@@ -239,3 +239,22 @@ background: linear-gradient(#3d8c39, #203625);
 
     color:white;
 }
+
+/* ヘルプページ */
+.help-area {
+    margin:10px;
+    padding:10px;
+}
+
+.help-contents {
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius:10px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+
+a {
+    text-decoration: none;
+}

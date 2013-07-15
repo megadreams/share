@@ -90,3 +90,34 @@ footer {
     line-height: 1.5em;
     font-size:10px;
 }
+
+/* ヘルプページ */
+.help-area {
+    margin:10px;
+    padding:10px;
+}
+
+.help-contents {
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius:10px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+
+.btn-blue {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2c7bff), color-stop(1.00, #021ecd));
+    background: -webkit-linear-gradient(#2c7bff, #021ecd);
+    background: -moz-linear-gradient(#2c7bff, #021ecd);
+    background: -o-linear-gradient(#2c7bff, #021ecd);
+    background: -ms-linear-gradient(#2c7bff, #021ecd);
+    background: linear-gradient(#2c7bff, #021ecd);
+    color:white;
+}
