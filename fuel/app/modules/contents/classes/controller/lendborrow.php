@@ -21,6 +21,7 @@ class Controller_lendborrow extends Controller_Common
         $lend_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
                 'where' => array(
                     array('lend_user_id', '=', $this->user_profile_id),
+                    array('status', '=', 0),
                 ),
             ));
  
@@ -28,6 +29,7 @@ class Controller_lendborrow extends Controller_Common
         $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
                 'where' => array(
                     array('borrow_user_id', '=', $this->user_profile_id),
+                    array('status', '=', 0),
                 ),
             ));
         
