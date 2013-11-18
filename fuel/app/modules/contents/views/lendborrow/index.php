@@ -20,10 +20,10 @@
                         <div class="recode-left w20p float">
                             <img src="<?php echo $records['user_info']['img_url'];?>" alt="プロフィール画像">
                         </div>
-                        <div class="recode-center w60p float">
+                        <div class="recode-center w50p float">
                             <span><?php echo $records['user_info']['user_name']; ?></span>
                         </div>
-                        <div class="recode-right w20p float">
+                        <div class="recode-right w30p float">
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
                                     貸
