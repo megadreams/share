@@ -50,6 +50,7 @@ class Controller_lendborrow extends Controller_Common
         foreach ($borrow_info as $borrow) {  
             if (!isset($records[$borrow->lend_user_id])) {
                 $records[$borrow->lend_user_id] = array(
+                                                     'sum'        => 0,
                                                      'user_info' => $user_friends[$borrow->lend_user_id]
                                                    );
             }

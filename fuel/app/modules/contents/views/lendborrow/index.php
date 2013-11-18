@@ -33,9 +33,9 @@
                             </div>
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
-                                    <span>+<?php echo $records['sum'];?></span>
+                                    <span><?php echo number_format($records['sum']);?>円</span>
                                 <?php elseif ($records['sum'] < 0): ?>
-                                    <span>-<?php echo $records['sum'];?></span>
+                                    <span><?php echo number_format(abs($records['sum']));?>円</span>
                                 <?php endif; ?>                                
                             </div>
                         </div>

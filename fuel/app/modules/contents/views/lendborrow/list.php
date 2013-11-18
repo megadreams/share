@@ -32,7 +32,7 @@
         </div>
         <div>
             <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
-            現在<?php echo abs($view_data['lend_and_borrow_summary']['sum']);?>円 <?php echo $comment;?>ています。
+            現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
         </div>
     </section>
 
