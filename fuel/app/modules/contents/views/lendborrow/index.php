@@ -27,14 +27,14 @@
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
                                     貸
-                                <?php elseif ($records['sum'] > 0): ?>
+                                <?php elseif ($records['sum'] < 0): ?>
                                     借
                                 <?php endif; ?>
                             </div>
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
                                     <span>+<?php echo $records['sum'];?></span>
-                                <?php elseif ($records['sum'] > 0): ?>
+                                <?php elseif ($records['sum'] < 0): ?>
                                     <span>-<?php echo $records['sum'];?></span>
                                 <?php endif; ?>                                
                             </div>
