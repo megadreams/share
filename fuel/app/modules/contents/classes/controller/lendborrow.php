@@ -23,7 +23,7 @@ class Controller_lendborrow extends Controller_Common
                     array('lend_user_id', '=', $this->user_profile_id),
                 ),
             ));
-        
+ 
         //借りている情報
         $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
                 'where' => array(
@@ -33,31 +33,29 @@ class Controller_lendborrow extends Controller_Common
         
         //人別　貸し借り数の表示
         $records = array();
+        // 貸している情報を取得
         foreach ($lend_info as $lend) {
             if (!isset($records[$lend->borrow_user_id])) {
                 $records[$lend->borrow_user_id] = array(
-                                                    'lend'       => 0,
-                                                    'borrow'     => 0,
-                                                     'user_info' => $user_friends[$lend->borrow_user_id]
+                                                    'sum'        => 0,
+                                                    'user_info' => $user_friends[$lend->borrow_user_id]
                                                    );
             }
-            $records[$lend->borrow_user_id]['lend']++;
+            $records[$lend->borrow_user_id]['sum'] += (int)$lend->money;
         }
-        
+
+        //　借りている情報を取得
         foreach ($borrow_info as $borrow) {  
             if (!isset($records[$borrow->lend_user_id])) {
                 $records[$borrow->lend_user_id] = array(
-                                                    'lend'       => 0,
-                                                    'borrow'     => 0,
                                                      'user_info' => $user_friends[$borrow->lend_user_id]
                                                    );
             }
-            $records[$borrow->lend_user_id]['borrow']++;
+            $records[$lend->borrow_user_id]['sum'] -= (int)$borrow->money;
         }
-                
-        $this->view_data['records'] = $records;
         
-        $this->viewWrap('lendborrow/index', 'TOP');
+        $this->view_data['records'] = $records;
+        $this->viewWrap('lendborrow/index', '貸し借りリスト');
     }
     
     /**
@@ -78,7 +76,7 @@ class Controller_lendborrow extends Controller_Common
                 'where' => array(
                     array('lend_user_id', '=', $this->user_profile_id),
                     array('borrow_user_id', '=', $your_user_id),
-                    array('status', '=', $status),
+//                    array('status', '=', $status),
                 ),
                 'related' => array('category_mst'),
             ));
@@ -89,7 +87,7 @@ class Controller_lendborrow extends Controller_Common
                 'where' => array(
                     array('lend_user_id', '=', $your_user_id),
                     array('borrow_user_id', '=', $this->user_profile_id),
-                    array('status', '=', $status),
+//                    array('status', '=', $status),
                 ),
                 'related' => array('category_mst'),
             ));
@@ -97,12 +95,37 @@ class Controller_lendborrow extends Controller_Common
         //状態を取得
         $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
 
+        
+        // 合計で貸しているのか借りているのかを表示する
+        $lend_and_borrow_summary = array(
+                            'lend'   => 0,
+                            'borrow' => 0,
+                            'sum'    => 0,
+        );
+        // 貸している情報をまとめる
+        foreach ($lend_info as $recode) {
+            // 返金されていないデータのみ取得
+            if ($recode->status == 0) {
+                $lend_and_borrow_summary['lend'] += (int)$recode->money;
+            }
+        }
+        // 借りている情報をまとめる
+        foreach ($borrow_info as $recode) {
+            // 返金されていないデータのみ取得
+            if ($recode->status == 0) {
+                $lend_and_borrow_summary['borrow'] += (int)$recode->money;
+            }
+        }
+        // 合計値の算出  (-の場合借金、+の場合貸している)
+        $lend_and_borrow_summary['sum'] = $lend_and_borrow_summary['lend'] - $lend_and_borrow_summary['borrow'];
+        
         //その人への貸し借り情報別表示
         $records = array();
         $records['lend']   = $lend_info;
         $records['borrow'] = $borrow_info;
                 
         $this->view_data['records'] = $records;
+        $this->view_data['lend_and_borrow_summary'] = $lend_and_borrow_summary;
 
         $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さんへ');                
     }
@@ -224,22 +247,31 @@ class Controller_lendborrow extends Controller_Common
             //友達リストが他PFからの取得の場合その友達ユーザの登録を行う
             if ($user_friend_add_pf !== 'default') {
                 //FacebookIDが既に登録されているか？
-                $other_user = $this->model_wrap->call('Model_User_Profile','find','first', array(
+                $other_user = $this->model_wrap->call('Model_User_Facebook','find','first', array(
                     'where' => array(
-                        array('facebook_user_id', '=', $your_user_id),
+                        array('facebook_id', '=', $your_user_id),
                     ),
                 ));
                 
                 if (empty($other_user)) {
-                    //ユーザの登録
-                    $ins_data = array(
+                    //FB用とユーザ用の２つ登録
+                    $facebook_ins_data = array(
+                        'facebook_id' => $your_user_id,
+                    );
+                    $user_ins_data = array(                    
                         'user_name'        => $add_your_user_name,
-                        'facebook_user_id' => $your_user_id,
                         'img_url'          => 'https://graph.facebook.com/' . $your_user_id . '/picture',
                     );
-                    $user_data = $this->model_wrap->getModelInstance('Model_User_Profile',$ins_data);
-                    $user_data->save();
                     
+                    $user_data     = $this->model_wrap->getModelInstance('Model_User_Profile', $user_ins_data);
+                    $facebook_data = $this->model_wrap->getModelInstance('Model_User_Facebook',$facebook_ins_data);
+                    
+                    
+                    $user_data->save();
+                    $facebook_data->user_profile_id = $user_data->id;
+                    $facebook_data->save();
+                
+                   
                     $your_user_id = $user_data->id;
                     
                     //友達登録するか？

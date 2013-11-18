@@ -63,7 +63,6 @@ class Controller_Common extends \Controller_Template {
         $this->user_profile = new Lib_UserProfile($this->model_wrap, $this->user_profile_id);
            
         
-
     }
 
 

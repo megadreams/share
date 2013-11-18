@@ -11,6 +11,32 @@
             
         </div>
     </header>
+
+    <?php //現在の貸し借り状況を確認できるようにする ?>
+    <section class="float-area">
+        <div class="w50p float">
+            <div>
+                貸
+            </div>
+            <div>
+                <?php echo $view_data['lend_and_borrow_summary']['lend'];?>円;
+            </div>
+        </div>
+        <div class="w50p float">
+            <div>
+                借
+            </div>
+            <div>
+                <?php echo $view_data['lend_and_borrow_summary']['borrow'];?>円;
+            </div>
+        </div>
+        <div>
+            <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
+            現在<?php echo abs($view_data['lend_and_borrow_summary']['sum']);?>円 <?php echo $comment;?>ています。
+        </div>
+    </section>
+
+
     <?php //タブ切り替えがいいな ?>
     <div class="float-area">
         <div id="lend" class="tab-btn w50p float tab-on">
@@ -23,7 +49,7 @@
 
 <?php $view = array('lend', 'borrow'); ?>
 <?php foreach ($view as $type): ?>
-    <section id="type-<?php echo $type;?>" class="records <?php echo ($type === 'borrow')?'display-none':'';?>">
+    <section id="type-<?php echo $type;?>" class="<?php echo ($type === 'borrow')?'display-none':'';?>">
         <?php if (count($view_data['records'][$type]) > 0): ?>
             <?php foreach ($view_data['records'][$type] as $records): ?>
                 <a href="<?php echo $view_data['base_url'] . 'lendborrow/detail/' . $type . '/' .$records->id;?>">

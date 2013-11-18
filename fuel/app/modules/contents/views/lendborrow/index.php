@@ -12,7 +12,7 @@
         </div>
     </header>
 
-    <section class="records">
+    <section>
         <?php if (count($view_data['records']) > 0): ?>
             <?php foreach ($view_data['records'] as $records): ?>
                 <a href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $records['user_info']['id'];?>">
@@ -25,10 +25,18 @@
                         </div>
                         <div class="recode-right w20p float">
                             <div class="status-view">
-                                貸　<span class="<?php echo ($records['lend'] > 0)? 'status-on':'status-off'; ?>"><?php echo $records['lend']; ?></span>
+                                <?php if ($records['sum'] > 0): ?>
+                                    貸
+                                <?php elseif ($records['sum'] > 0): ?>
+                                    借
+                                <?php endif; ?>
                             </div>
                             <div class="status-view">
-                                借　<span class="<?php echo ($records['borrow'] > 0)? 'status-on':'status-off'; ?>"><?php echo $records['borrow']; ?></span>
+                                <?php if ($records['sum'] > 0): ?>
+                                    <span>+<?php echo $records['sum'];?></span>
+                                <?php elseif ($records['sum'] > 0): ?>
+                                    <span>-<?php echo $records['sum'];?></span>
+                                <?php endif; ?>                                
                             </div>
                         </div>
                     </div>
@@ -38,21 +46,5 @@
             <div>
                 現在、貸し借りしている情報はありません。
             </div>
-     
-        <?php /*
-            <br>
-            ・FBフィードもしくはメッセージの送信
-            <br>
-            ・リンクで参照可能な貸し借りペーじ
-            <br>
-            ・セッションの細かい設定
-            <br>
-            ・全体的なデザイン
-            <br>
-            ・ツイッターログイン
-
-            */ ?>
-            
-            
         <?php endif;?>
     </section>
