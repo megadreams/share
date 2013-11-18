@@ -40,8 +40,12 @@ class Controller_auth extends Controller_Common
 
         //ユーザ情報と名前を取得する
         $login_user_data = $this->strategy->getUserProfile();
-        
-        //エラーチェック
+        /*
+        $login_user_data = array(
+            'id' => '1732099499',
+            'user_name' => '藤原涼',
+        );
+         */
         if ($login_user_data === false) {
             //エラーページへ
             \Response::redirect(\Uri::base() . 'error/message/1');
@@ -49,33 +53,69 @@ class Controller_auth extends Controller_Common
         
 
         //既に登録されているユーザかをチェックする
-        $user_profile = $this->model_wrap->call('Model_User_Profile', 'find', 'first', array(
+        $pf_user_profile = $this->model_wrap->call('Model_User_Facebook', 'find', 'first', array(
             'where' => array(
-                array('facebook_user_id', '=', $login_user_data['id'])
+                array('facebook_id', '=', $login_user_data['id'])
             )
         ));
         
         //登録されていなければ、登録処理
-        if (empty($user_profile)) {
+        if (empty($pf_user_profile)) {
 
-            if ($auth_platform === FACEBOOK) {
-                $auth_pf_user_id_text = 'facebook_user_id';
-            } else if ($auth_platform === TWITTER) {
-                $auth_pf_user_id_text = 'facebook_user_id';                
+            if ($auth_platform === PLATFORM_FACEBOOK) {
+                $auth_pf_user_id_text = 'facebook_id';
+            } else if ($auth_platform === PLATFORM_TWITTER) {
+                $auth_pf_user_id_text = 'facebook_id';                
             } else {
                 exit();
             }
-            $insert_data = array();
-            $insert_data['facebook_user_id'] = $login_user_data['id'];            
+            $insert_user_data = array();
+            $insert_user_data['user_name'] = $login_user_data['user_name'];
+            $insert_user_data['img_url']   = $this->strategy->getuserImage($login_user_data['id']);
+            $user_profile = $this->model_wrap->getModelInstance('Model_User_Profile', $insert_user_data);
+            var_dump($user_profile);
+//            exit();
             
-            $insert_data['user_name']        = $login_user_data['user_name'];
-            $insert_data['img_url']          = $this->strategy->getuserImage($login_user_data['id']);
-            $user_profile = $this->model_wrap->getModelInstance('Model_User_Profile', $insert_data);
-            $user_profile->save();
+            
+            $insert_platform_data = array();
+            $insert_platform_data['facebook_id'] = $login_user_data['id'];            
+            $insert_platform = $this->model_wrap->getModelInstance('Model_User_Facebook', $insert_platform_data);
+            try {
+                $db = \Database_Connection::instance();
+                $db->start_transaction();
+
+                $user_profile->save();
+                var_dump($user_profile->id);
+             
+                $insert_platform->user_profile_id = $user_profile->id;
+                $insert_platform->save();
+                $db->commit_transaction();
+
+                
+            } catch (Exception $e) {
+                
+                \Log::error(print_r($e));
+                $db->rollback_transaction();
+            }
+        } else {
+            // 登録されている場合はユーザ情報を取得
+            //既に登録されているユーザかをチェックする
+            $user_profile = $this->model_wrap->call('Model_User_Profile', 'find', 'first', array(
+                'where' => array(
+                    array('id', '=', $pf_user_profile->user_profile_id)
+                )
+            ));
+            
+            if (empty($user_profile)) {
+                // セッションエラー
+                \Response::redirect('contents/error');
+            }
         }
+
         //セッションにセットする
         \Session::set('user_profile_id', $user_profile->id);
         
+        // ログイン後の画面にリダイレクト
         \Response::redirect('contents/lendborrow/top?auth');
     }
     

@@ -18,7 +18,7 @@ class Lib_Facebook_Strategy extends Lib_Strategy implements Lib_Strategy_interfa
     }
     
     public function getLogoutUrl() {
-        return $this->facebook->getLogoutUrl(\Config::get('facebook.logout'));;
+        return $this->facebook->getLogoutUrl(\Config::get('facebook.logout'));
     }
     
     public function getUserProfile() {

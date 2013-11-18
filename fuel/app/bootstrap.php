@@ -28,8 +28,8 @@ define('ENVIRONMENT_TESTING'    , 'testing');
 define('ENVIRONMENT_PRODUCTION' , 'production');
 
 //認証PF
-define('FACEBOOK', 'facebook');
-define('TWITTER' , 'twitter');
+define('PLATFORM_FACEBOOK', 'facebook');
+define('PLATFORM_TWITTER' , 'twitter');
 
 
 /**

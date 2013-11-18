@@ -44,6 +44,10 @@ class Controller_Common extends \Controller_Template {
 
         
         $this->seg = \Uri::segments();
+        if (!isset($this->seg[0])){
+            \Response::redirect($this->view_data['base_url'] . 'auth/', 'refresh',200);
+        }
+          
         // 認証時は以下の処理は行わない
         if ($this->seg[1] === 'auth') {
             return;
