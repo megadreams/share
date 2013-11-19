@@ -1,7 +1,7 @@
     <header class="header float-area">
-        <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $view_data['your_user_id']; ?>">
+        <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/top/'; ?>">
             <div class="header-back-btn float">
-                戻る
+                TOPへ
             </div>
         </a>
         <div class="head-title float">
@@ -13,7 +13,7 @@
     </header>
 
     <?php //現在の貸し借り状況を確認できるようにする ?>
-    <section class="float-area">
+    <section class="float-area balance-sheet">
         <div class="w50p float">
             <div>
                 貸
@@ -38,7 +38,7 @@
 
 
     <?php //タブ切り替えがいいな ?>
-    <div class="float-area">
+    <div class="float-area balance-sheet-boundary">
         <div id="lend" class="tab-btn w50p float tab-on">
             貸している
         </div>

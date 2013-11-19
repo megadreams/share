@@ -201,3 +201,21 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
     color: white;
     padding: 5px;
 }
+
+/**
+* 貸し借りリストの表示の際の貸借表のスタイル
+*/
+.balance-sheet {
+    border: 1px dashed black;
+    margin: 5px
+}
+
+.balance-sheet-boundary {
+    border-top:1px solid black;
+}
+
+section a,header a {
+    text-decoration: none;
+    color:black;
+    cursor: auto;
+}

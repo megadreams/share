@@ -1,7 +1,7 @@
-    <header class="header ">
-        <a class="non-decoration" href="<?php echo $view_data['referer']; ?>">
+<header class="header ">
+        <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $view_data['your_user_id']; ?>">
             <div class="header-back-btn float">
-                TOPへ
+                戻る
             </div>
         </a>
         <div class="head-title float">

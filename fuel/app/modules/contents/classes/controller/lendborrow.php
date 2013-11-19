@@ -135,7 +135,6 @@ class Controller_lendborrow extends Controller_Common
         
         $this->view_data['records'] = $records;
         $this->view_data['lend_and_borrow_summary'] = $lend_and_borrow_summary;
-        $this->view_data['your_user_id'] = $your_user_id;
 
         $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さんへ');                
     }
@@ -169,7 +168,16 @@ class Controller_lendborrow extends Controller_Common
         foreach ($lendborrow_data as $data) {
             $this->view_data['lendborrow_data'] = $data;
         }
+        
+        if ($type === 'lend'){
+            $this->view_data['your_user_id'] = $this->view_data['lendborrow_data']['borrow_user_id'];            
+        } else if ($type === 'borrow'){
+            $this->view_data['your_user_id'] = $this->view_data['lendborrow_data']['lend_user_id'];
+        } else {
+            $this->view_data['your_user_id'] = null;            
+        }
         $this->view_data['type'] = $type;
+        
         //状態を取得
         $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
 

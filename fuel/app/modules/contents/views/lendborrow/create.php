@@ -243,6 +243,9 @@ $(function() {
     var nowpage = 0;
     var page = $('.page');
     
+    //１つ前に戻るボタンは、初期ページ以外で表示
+    $('.pre-btn').css("visibility","hidden");
+    
     
     //次のページへの遷移設定
     $(".next-btn").click(function() {
