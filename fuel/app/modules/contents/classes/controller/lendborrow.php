@@ -54,7 +54,7 @@ class Controller_lendborrow extends Controller_Common
                                                      'user_info' => $user_friends[$borrow->lend_user_id]
                                                    );
             }
-            $records[$lend->borrow_user_id]['sum'] -= (int)$borrow->money;
+            $records[$borrow->lend_user_id]['sum'] -= (int)$borrow->money;
         }
         
         $this->view_data['records'] = $records;
