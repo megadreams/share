@@ -1,7 +1,9 @@
     <header class="header ">
-        <div class="header-back-btn float">
-            　
-        </div>
+        <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/top/'; ?>">
+            <div class="header-back-btn float">
+                TOPへ
+            </div>
+        </a>
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
