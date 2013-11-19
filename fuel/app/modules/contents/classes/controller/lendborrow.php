@@ -39,10 +39,13 @@ class Controller_lendborrow extends Controller_Common
         foreach ($lend_info as $lend) {
             if (!isset($records[$lend->borrow_user_id])) {
                 $records[$lend->borrow_user_id] = array(
-                                                    'sum'        => 0,
+                                                    'lend'      => 0,
+                                                    'borrow'    => 0,
+                                                    'sum'       => 0,
                                                     'user_info' => $user_friends[$lend->borrow_user_id]
                                                    );
             }
+            $records[$lend->borrow_user_id]['lend'] += (int)$lend->money;
             $records[$lend->borrow_user_id]['sum'] += (int)$lend->money;
         }
 
@@ -50,10 +53,13 @@ class Controller_lendborrow extends Controller_Common
         foreach ($borrow_info as $borrow) {  
             if (!isset($records[$borrow->lend_user_id])) {
                 $records[$borrow->lend_user_id] = array(
-                                                     'sum'        => 0,
-                                                     'user_info' => $user_friends[$borrow->lend_user_id]
+                                                    'lend'      => 0,
+                                                    'borrow'    => 0,
+                                                    'sum'       => 0,
+                                                    'user_info' => $user_friends[$borrow->lend_user_id]
                                                    );
             }
+            $records[$borrow->lend_user_id]['borrow'] += (int)$borrow->money;
             $records[$borrow->lend_user_id]['sum'] -= (int)$borrow->money;
         }
         
@@ -82,7 +88,8 @@ class Controller_lendborrow extends Controller_Common
 //                    array('status', '=', $status),
                 ),
                 'order_by' => array(
-                    array('date', 'DESC')
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
                 ),
                 'related' => array('category_mst'),
             ));
@@ -96,7 +103,8 @@ class Controller_lendborrow extends Controller_Common
 //                    array('status', '=', $status),
                 ),
                 'order_by' => array(
-                    array('date', 'DESC')
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
                 ),
                 'related' => array('category_mst'),
             ));

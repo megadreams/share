@@ -259,3 +259,9 @@ background: linear-gradient(#3d8c39, #203625);
 a {
     text-decoration: none;
 }
+
+/* 色指定 */
+.color-red   { color:red; }
+.color-green { color:green; }
+.color-blue  { color:blue; }
+

@@ -207,7 +207,13 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 */
 .balance-sheet {
     border: 1px dashed black;
-    margin: 5px
+    margin: 5px        
+}
+
+.balance-sheet-comment {
+    font-size: 12px;
+    color: gray;
+    margin: 5px 0px;
 }
 
 .balance-sheet-boundary {
@@ -218,4 +224,13 @@ section a,header a {
     text-decoration: none;
     color:black;
     cursor: auto;
+}
+
+/**
+ * TOP　精算処理待ち
+ */
+.expense-report-comment {
+    font-size: 12px;
+    color: gray;
+    padding-top: 10px;
 }

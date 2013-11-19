@@ -26,17 +26,21 @@
                         <div class="recode-right w30p float">
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
-                                    貸
+                                    <span class="color-green">貸</span>
                                 <?php elseif ($records['sum'] < 0): ?>
-                                    借
+                                    <span class="color-red">借</span>
                                 <?php endif; ?>
                             </div>
                             <div class="status-view">
                                 <?php if ($records['sum'] > 0): ?>
-                                    <span><?php echo number_format($records['sum']);?>円</span>
+                                    <span class="color-green"><?php echo number_format($records['sum']);?>円</span>
                                 <?php elseif ($records['sum'] < 0): ?>
-                                    <span><?php echo number_format(abs($records['sum']));?>円</span>
-                                <?php endif; ?>                                
+                                    <span class="color-red"><?php echo number_format(abs($records['sum']));?>円</span>
+                                <?php elseif ($records['lend'] != 0 && $records['borrow'] != 0): ?>
+                                    <span class="newline expense-report-comment">精算処理待ち</span>
+                                <?php else: ?>
+                                    
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

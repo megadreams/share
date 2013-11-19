@@ -13,6 +13,7 @@
     </header>
 
     <?php //現在の貸し借り状況を確認できるようにする ?>
+    <?php if($view_data['lend_and_borrow_summary']['lend'] > 0 || $view_data['lend_and_borrow_summary']['borrow'] > 0): ?>
     <section class="float-area balance-sheet">
         <div class="w50p float">
             <div>
@@ -30,11 +31,18 @@
                 <?php echo $view_data['lend_and_borrow_summary']['borrow'];?>円;
             </div>
         </div>
-        <div>
-            <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
-            現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
+        <div class="balance-sheet-comment">
+            <?php if ($view_data['lend_and_borrow_summary']['sum'] > 0): ?>
+                <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
+                現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
+            <?php else: ?>
+                <span class="newline">現在貸し借りで、金額が相殺されています。</span>
+                <span class="newline">金額を相殺する場合は、状態を受取または</span>
+                <span class="newline">返済済みに変更して精算してください。</span>
+            <?php endif;?>
         </div>
     </section>
+    <?php endif;?>
 
 
     <?php //タブ切り替えがいいな ?>
@@ -81,7 +89,24 @@
                                 状態
                             </span>
                             <span class="status newline">
-                                <?php echo $view_data['lendborrow_status'][$type][$records->status]; ?></span>
+                                <?php // 貸している、借りている状態 ?>
+                                <?php $class_name = ''; ?>
+                                
+                                <?php if ($records->status == 0): ?>
+                                    <?php if ($type === 'lend'):?>
+                                        <?php $class_name = 'color-green'; ?>
+                                    <?php elseif ($type === 'borrow'):?>
+                                        <?php $class_name = 'color-red'; ?>
+                                    <?php endif;?>
+                                    <span class="<?php echo $class_name;?>">
+                                        <?php echo $view_data['lendborrow_status'][$type][$records->status]; ?>
+                                    </span>
+                                <?php elseif ($records->status == 1): ?>
+                                    <span class="<?php echo $class_name;?>">
+                                        <?php echo $view_data['lendborrow_status'][$type][$records->status]; ?>
+                                    </span>
+                                <?php elseif ($records->status == 2): ?>
+                                <?php endif;?>
                             </span>
                         </div>
                     </div>
