@@ -1,7 +1,7 @@
     <header class="header ">
         <a class="non-decoration" href="<?php echo $view_data['referer']; ?>">
             <div class="header-back-btn float">
-                戻る
+                TOPへ
             </div>
         </a>
         <div class="head-title float">

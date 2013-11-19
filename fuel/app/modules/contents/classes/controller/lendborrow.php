@@ -132,9 +132,10 @@ class Controller_lendborrow extends Controller_Common
         $records = array();
         $records['lend']   = $lend_info;
         $records['borrow'] = $borrow_info;
-                
+        
         $this->view_data['records'] = $records;
         $this->view_data['lend_and_borrow_summary'] = $lend_and_borrow_summary;
+        $this->view_data['your_user_id'] = $your_user_id;
 
         $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さんへ');                
     }

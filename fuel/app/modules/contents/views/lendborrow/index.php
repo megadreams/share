@@ -6,8 +6,8 @@
             <h1><?php echo $title; ?></h1>
         </div>
         <div class="head-right-btn float">
-            <a href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
-                <?php echo \Asset::img('vender/png/32x32/Plus.png'); ?>
+            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
+                追加
             </a>
         </div>
     </header>

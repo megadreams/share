@@ -17,7 +17,7 @@ class Controller_Top extends Controller_Common
      */
     public function action_index()
     {
-        \Response::redirect('contents/auth/');
+        \Response::redirect('contents/lendborrow/top');
     }
 
 }
