@@ -81,6 +81,9 @@ class Controller_lendborrow extends Controller_Common
                     array('borrow_user_id', '=', $your_user_id),
 //                    array('status', '=', $status),
                 ),
+                'order_by' => array(
+                    array('date', 'DESC')
+                ),
                 'related' => array('category_mst'),
             ));
         
@@ -91,6 +94,9 @@ class Controller_lendborrow extends Controller_Common
                     array('lend_user_id', '=', $your_user_id),
                     array('borrow_user_id', '=', $this->user_profile_id),
 //                    array('status', '=', $status),
+                ),
+                'order_by' => array(
+                    array('date', 'DESC')
                 ),
                 'related' => array('category_mst'),
             ));
