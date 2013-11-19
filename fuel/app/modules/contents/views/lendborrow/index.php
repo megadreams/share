@@ -1,13 +1,15 @@
     <header class="header ">
         <div class="head-left-btn float">
-            　
+            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
+                追加
+            </a>            　
         </div>
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
         <div class="head-right-btn float">
-            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
-                追加
+            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'setting/';?>">
+                設定
             </a>
         </div>
     </header>

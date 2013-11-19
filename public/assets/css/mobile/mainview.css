@@ -234,3 +234,10 @@ section a,header a {
     color: gray;
     padding-top: 10px;
 }
+
+/**
+* 設定画面
+*/ 
+.setting-user-info {
+    margin:5px 10px;
+}
