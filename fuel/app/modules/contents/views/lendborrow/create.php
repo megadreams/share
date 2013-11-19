@@ -5,7 +5,7 @@
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
-        <div class="head-right-btn create-pre-btn float">
+        <div class="head-right-btn pre-btn float">
             戻る
         </div>
     </header>
@@ -14,12 +14,13 @@
         <span id="step1" class="index-status status-active">貸借</span> ->
         <span id="step2" class="index-status">お相手</span> -> 
         <span id="step3" class="index-status">カテゴリ</span> -> 
-        <span id="step4" class="index-status">詳細</span>
+        <span id="step4" class="index-status">日付</span> -> 
+        <span id="step5" class="index-status">その他</span>
     </div>
     <form action="" method="POST">
         <div class="create-view">
             <section class="create-view page">
-                <h1>選択してください</h1>
+                <h1>状況を選択してください</h1>
                 <div class="float-area">
                     <div class="float w50p">
                         <label>
@@ -37,10 +38,18 @@
                 <div style="zoom: 0.5;">
                     <?php echo Asset::img('create/lendborrow.gif');?>
                 </div>
+                <div class="float-area">
+                    <div class="float w50p">
+                        　
+                    </div>
+                    <div class="float w50p">
+                        <span class="next-btn">次へ</span>
+                    </div>
+                </div>
             </section>
 
 
-            <section class="create-view page">
+            <section class="create-view page non-display">                   
                 <header>
                     <h1>
                         誰に<span class="type-text"></span>いますか？
@@ -48,7 +57,7 @@
                 </header>
                 <input type="hidden" name="user_friend_add_pf" value="default">
                 
-                <div id="user-friends" class="create-friend-list">
+                <div id="user-friends" class="">
                     <?php if (count($view_data['user_friends']) > 0): ?>
                         <?php foreach($view_data['user_friends'] as $user_friends): ?>
                             <label>
@@ -83,10 +92,18 @@
                         友達を探す
                     </a>                
                 </div>
+                <div class="float-area">
+                    <div class="float w50p">
+                        <span class="pre-btn">前へ</span>
+                    </div>
+                    <div class="float w50p">
+                        <span class="next-btn">次へ</span>
+                    </div>
+                </div>                
             </section>
 
 
-            <section class="create-view page">
+            <section class="create-view page non-display">
                 <header>
                     <h1>
                         <span class="type-text"></span>いるものを選択してください
@@ -97,7 +114,8 @@
                         <label>
                             <div class="create-record float-area">
                                 <div class="w10p float">
-                                    <input class="next-btn" type="radio" name="category_mst_id" value="<?php echo $category['id'];?>">
+<!--                                    <input class="next-btn" type="radio" name="category_mst_id" value="<?php echo $category['id'];?>" checked> -->
+                                    <input type="radio" name="category_mst_id" value="<?php echo $category['id'];?>" checked>
                                     <input id="category-name<?php echo $category['id'];?>"type="hidden"  value="<?php echo $category['category_name'];?>">
                                 </div>
                                 <div class="w20p record-img float">
@@ -111,10 +129,45 @@
                         </label>
                     <?php endforeach; ?>
                 </div>
+                <div class="create-input-box">
+                    <div class="input-box float-area">
+                        <span class="w30p float">金額</span>
+                        <input class="w60p text-right" type="tel" name="money" value="0">
+                    </div>
+               </div> 
+                <div class="float-area">
+                    <div class="float w50p">
+                        <span class="pre-btn">前へ</span>
+                    </div>
+                    <div class="float w50p">
+                        <span class="next-btn">次へ</span>
+                    </div>
+                </div>                
+            </section>
+            
+            <section class="create-view page non-display">
+                <header>
+                    <h1>
+                        貸し借りした日付を選択してください
+                    </h1>
+                </header>
+                <div class="create-friend-list">
+                    <div class="input-box float-area">
+                        <span class="w30p float">貸借日</span>
+                        <input class="w60p text-right" type="date" name="date" value="<?php echo date('Y/m/d');?>">                        
+                    </div>
+                </div>
+                <div class="float-area">
+                    <div class="float w50p">
+                        <span class="pre-btn">前へ</span>
+                    </div>
+                    <div class="float w50p">
+                        <span class="next-btn">次へ</span>
+                    </div>
+                </div>                
             </section>
 
-
-            <section class="create-view page">
+            <section class="create-view page non-display">
                 <header>
                     <h1>
                         <span class="newline">
@@ -124,18 +177,7 @@
                             <span class="category-text"></span>を<span class="type-text"></span>いる
                         </span>
                     </h1>
-                </header>                
-                <div class="create-input-box">
-                    <div class="input-box float-area">
-                        <span class="w30p float">貸借日</span>
-                        <input class="w60p text-right" type="date" name="date" value="<?php echo date('Y/m/d');?>">                        
-                    </div>
-                    <div class="input-box float-area">
-                        <span class="w30p float">金額</span>
-                        <input class="w60p text-right" type="tel" name="money" value="0">
-                    </div>
-               </div>
-                    
+                </header>                                    
                 <div class="create-input-box">
                    <span class="text-left">オプション</span>
                     <div class="input-box float-area">
@@ -148,7 +190,15 @@
                     </div>
                 </div>
                 <input type="hidden" name="add_your_user_name" value="">
-                <input type="submit" name="create" value="登録">                    
+                <input class="regist-btn" type="submit" name="create" value="登録">
+                <div class="float-area">
+                    <div class="float w50p">
+                        <span class="pre-btn">前へ</span>
+                    </div>
+                    <div class="float w50p">
+                        　
+                    </div>
+                </div>               
             </section>
         </div>
     </form>
@@ -196,24 +246,50 @@ $(function() {
     
     //次のページへの遷移設定
     $(".next-btn").click(function() {
+        // ページが変わる際には入力値チェックを行う
+        if (validationCheck(nowpage) === false){
+            alert("データを入力してください");
+            return false;
+        }        var tmp_page = nowpage;
         nowpage++;
-        
-        changePage(nowpage);        
+        changePage(tmp_page, nowpage);        
     });
 
     $('.index-status').click(function(){
-        nowpage = Number(this.id.split('step').join('')) - 1;
-        changePage(nowpage);        
+        
+       var next_page = Number(this.id.split('step').join('')) - 1;
+
+       // 今よりも先のページに行く場合は、入力値チェック
+       if ((next_page - nowpage) > 0) {
+           
+           // 複数ページ先に行く場合には、１ページずつ入力内容をチェックする必要がある
+           // 入力が必要な際には、そのページに強制的に移動する
+           for (var i=nowpage; i < next_page; i++) {
+                // ページが変わる際には入力値チェックを行う
+                if (validationCheck(i) === false){
+                    alert("データを入力してください");
+                    var pre_page = nowpage;
+                    nowpage = i;
+                    changePage(pre_page, nowpage);       
+                    return false;
+                }               
+           }
+        }
+ 
+       var tmp_pre_page = nowpage;       
+       nowpage = next_page;
+       changePage(tmp_pre_page, nowpage);        
     });
 
 
     //戻るボタン
-    $(".create-pre-btn").click(function () {
+    $(".pre-btn").click(function () {
         if (nowpage === 0) {
             return;
         }
+        var tmp_page = nowpage;
         nowpage--;
-        changePage(nowpage);
+        changePage(tmp_page, nowpage);
     });
     
     //キャンセルボタン
@@ -222,6 +298,13 @@ $(function() {
             location.href ="<?php echo $view_data['base_url'] . 'lendborrow/top'; ?>";
         }
         return ;
+    });
+    
+    // 登録ボタン
+    $("[name=create]").click(function(){
+        if (!confirm("登録してよろしいですか？")) {
+            return false;
+        }
     });
 
     //フォーカス時に文字を削除する
@@ -277,8 +360,14 @@ $(function() {
                 $('#lean_overlay').click();
                 //クリックイベントの追加
                 $('#user-friends .next-btn').click(function(){
+                    // ページが変わる際には入力値チェックを行う
+                    if (validationCheck(nowpage) === false){
+                        alert("データを入力してください");
+                        return false;
+                    }                    
+                    var tmp_page = nowpage;
                     nowpage++;
-                    changePage(nowpage);        
+                    changePage(tmp_page, nowpage);        
                 });
 //            ingicater_end();
             },
@@ -290,19 +379,19 @@ $(function() {
 
 
 
-function changePage(index) {
+function changePage(nowIndex,nextIindex) {
     //ステータス変更
     $('.index-status').each(function(i, item){
         if ($(item).hasClass("status-active") === true) {
             $(item).removeClass("status-active");
         }
         
-        if (index === i) {
+        if (nextIindex === i) {
             $(item).addClass("status-active");
         }
     });
     
-    if (index === 1) {
+    if (nextIindex === 1) {
         var type = $('input[name="type"]').filter(':checked').val();
         var text = '';
         if (type === 'lend') {
@@ -312,7 +401,7 @@ function changePage(index) {
         }
         console.log(text);
         $('.type-text').text(text);
-    } else if (index === 2) {
+    } else if (nextIindex === 2) {
         //ユーザ名の取得
         var yourUserId = $('input[name="your_user_id"]').filter(':checked').val();
         var yourUserName = $('#your-user-name'+yourUserId).val();        
@@ -321,7 +410,7 @@ function changePage(index) {
         $('input[name="add_your_user_name"]').val(yourUserName);
         
         
-    } else if (index === 3) {
+    } else if (nextIindex === 3) {
         //カテゴリ名の取得
         var categoryId = $('input[name="category_mst_id"]').filter(':checked').val();
         var categoryName = $('#category-name'+categoryId).val();        
@@ -329,29 +418,83 @@ function changePage(index) {
         
     } 
     
+    // nowPageを隠す
+    console.log($('.page')[nowIndex]);
+    console.log($('.page')[nextIindex]);
+
+
+    // 今のページが非表示じゃなかったら非表示にする
+    if ($($('.page')[nowIndex]).hasClass('non-display') === false) {
+        $($('.page')[nowIndex]).addClass('non-display');
+    }
     
+    // 次のページが非表示なら表示にする
+    if ($($('.page')[nextIindex]).hasClass('non-display') === true) {
+        $($('.page')[nextIindex]).removeClass('non-display');
+    }
     
-    if (index === 0) {
-        //最初は、ステータス領域の差分はいらない
-        var p = $(".page").height() * index - $('.header').height();
+    // nextPageを表示する
+    
+    if (nextIindex === 0) {
+        //最初を表示
+        
+//        var p = $(".page").height() * nextIindex - $('.header').height();
         
         //１つ前に戻るボタンは、初期ページ以外で表示
-        $('.create-pre-btn').css("visibility","hidden");
+        $('.pre-btn').css("visibility","hidden");
         
     } else {
         //スクロールする部分の高さ * ページ数 + ステータス表示領域 - ヘッダーの高さ
-        var p = $(".page").height() * index + ($('.create-status').height() - $('.header').height());
+//        var p = $(".page").height() * nextIindex + ($('.create-status').height() - $('.header').height());
         
         //１つ前に戻るボタンの表示
-        $('.create-pre-btn').css("visibility","visible");        
+        $('.pre-btn').css("visibility","visible");        
     }
     
     
-    $('.create-view').animate({ scrollTop: p }, 'fast');
+//    $('.create-view').animate({ scrollTop: p }, 'fast');
     return false;
     
 }
+/**
+ * 入力値チェックを行うメソッド
+ * そのページで必要な内容が入力されていない場合は、次のページには行けない
+ * 
+ * @pram page ページ番号
+ * @return true  入力値チェックで問題ない
+ *         false 入力内容が不正
+ */
+function validationCheck(page) {
+    // 貸借選択
+    if (page === 0) {
+        // 選択中の型がundefinedでなければ選んでいる
+        if (typeof　$("[name=type]:checked").val() === "undefined") {
+            return false;
+        }
+    // お相手選択
+    } else if (page === 1) {
+        if (typeof　$("[name=your_user_id]:checked").val() === "undefined") {
+            return false;
+        }
+    // カテゴリ選択
+    } else if (page === 2) {
+        // カテゴリ選択
+        if (typeof　$("[name=category_mst_id]:checked").val() === "undefined") {
+            return false;
+        }
+        // 金額入力 数値のみ受付
+        if ($.isNumeric($("[name=money]").val()) === false) {
+            return false;
+        }
+    // 日付選択
+    } else if (page === 3) {
+        // 入力されていない場合
+        if ($("[name=date]").val().length <= 0){
+            return false;
+        }
+    }
 
+}
 </script>
 
     

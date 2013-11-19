@@ -109,8 +109,10 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 /* 新規登録画面 */
 /* 全体フロー管理 */
 .create-view {
+/*    
     overflow: hidden;
     height:350px;    
+*/
 }
 
 .create-status {
@@ -133,7 +135,7 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 
 .create-friend-list {
     overflow: scroll;
-    height: 215px;
+    height: 45px;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 1px 1px 1px #808080;
@@ -153,7 +155,7 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 
 
 .create-input-box {
-    margin: 10px 10px;
+    margin: 10px 5px;
     padding: 5px;
     border: 1px solid black;
     border-radius: 10px;
@@ -176,4 +178,14 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 .message-area {
     margin: 10px 0px;
     padding: 5px;
+}
+
+.non-display {
+    display:none;
+}
+
+.regist-btn {
+    padding: 5px;
+    width: 100px;
+    font-size: 22px;
 }
