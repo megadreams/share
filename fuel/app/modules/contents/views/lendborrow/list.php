@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="balance-sheet-comment">
-            <?php if ($view_data['lend_and_borrow_summary']['sum'] > 0): ?>
+            <?php if ($view_data['lend_and_borrow_summary']['sum'] != 0): ?>
                 <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
                 現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
             <?php else: ?>
