@@ -1,12 +1,15 @@
 
 /* ページヘッダー*/
 .header {
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #b4ddfe), color-stop(1.00, #0d4996));
-        background: -webkit-linear-gradient(#b4ddfe, #0d4996);
-        background: -moz-linear-gradient(#b4ddfe, #0d4996);
-        background: -o-linear-gradient(#b4ddfe, #0d4996);
-        background: -ms-linear-gradient(#b4ddfe, #0d4996);
-        background: linear-gradient(#b4ddfe, #0d4996);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #99dff5), color-stop(0.00, #02b0e6));
+background: -webkit-linear-gradient(#02b0e6, #99dff5);
+background: -moz-linear-gradient(#02b0e6, #99dff5);
+background: -o-linear-gradient(#02b0e6, #99dff5);
+background: -ms-linear-gradient(#02b0e6, #99dff5);
+background: linear-gradient(#02b0e6, #99dff5);
+
+
+
 
         height:44px;
         inner-height:40px;
