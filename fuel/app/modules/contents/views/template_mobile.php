@@ -19,5 +19,7 @@
 
     </body>
     <footer>
-<SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.co.jp/widgets/q?ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fmegadreams14-22%2F8009%2F84887fa7-0cf2-42d3-a507-09daa4d25bd1&Operation=GetScriptTemplate"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.co.jp/widgets/q?ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fmegadreams14-22%2F8009%2F84887fa7-0cf2-42d3-a507-09daa4d25bd1&Operation=NoScript">Amazon.co.jp ウィジェット</A></NOSCRIPT>    </footer>
+<a href="http://www.amazon.co.jp/gp/aw/rd.html?ie=UTF8&at=megadreams14-22&lc=mbn&uid=NULLGWDOCOMO&url=%2Fgp%2Faw%2Fh.html"><img src="present-192x53._V192555874_.gif" width="192" height="53" border="0" alt="Amazon.co.jpロゴ"></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=megadreams14-22&l=mbn&o=9" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
+    </footer>    
 </html>
