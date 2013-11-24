@@ -19,7 +19,7 @@
 
     </body>
     <footer>
-<a href="http://www.amazon.co.jp/gp/aw/rd.html?ie=UTF8&at=megadreams14-22&lc=mbn&uid=NULLGWDOCOMO&url=%2Fgp%2Faw%2Fh.html"><img src="present-192x53._V192555874_.gif" width="192" height="53" border="0" alt="Amazon.co.jpロゴ"></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=megadreams14-22&l=mbn&o=9" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?t=megadreams14-22&o=9&p=288&l=ur1&category=special_deal&f=ifr" width="320" height="50" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
 
     </footer>    
 </html>
