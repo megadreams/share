@@ -19,9 +19,5 @@
 
     </body>
     <footer>
-        <a href="http://www.amazon.co.jp/gp/aw/gb?ie=UTF8&at=megadreams14-22&lc=jsb">
-            <img src="fall_sale_assoc_300_50._V353621851_.gif" width="300" height="50" border="0" alt="Amazon特別プロモーション">
-        </a>
-        <img src="http://ir-jp.amazon-adsystem.com/e/ir?t=megadreams14-22&l=jsb&o=9" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-    </footer>
+<SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.co.jp/widgets/q?ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fmegadreams14-22%2F8009%2F84887fa7-0cf2-42d3-a507-09daa4d25bd1&Operation=GetScriptTemplate"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.co.jp/widgets/q?ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fmegadreams14-22%2F8009%2F84887fa7-0cf2-42d3-a507-09daa4d25bd1&Operation=NoScript">Amazon.co.jp ウィジェット</A></NOSCRIPT>    </footer>
 </html>
