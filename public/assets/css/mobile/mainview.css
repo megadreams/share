@@ -24,6 +24,10 @@ h1 {
         -webkit-margin-after: 0em;
 }
 
+footer {
+    position: fixed;
+    bottom: -20px;
+}
 .head-title {
     width:60%;
 }
@@ -244,3 +248,7 @@ section a,header a {
 .setting-user-info {
     margin:5px 10px;
 }
+
+/*
+* 通知設定画面
+*/
