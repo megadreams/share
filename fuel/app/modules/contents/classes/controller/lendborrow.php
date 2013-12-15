@@ -112,29 +112,8 @@ class Controller_lendborrow extends Controller_Common
         //状態を取得
         $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
 
-        
-        // 合計で貸しているのか借りているのかを表示する
-        $lend_and_borrow_summary = array(
-                            'lend'   => 0,
-                            'borrow' => 0,
-                            'sum'    => 0,
-        );
-        // 貸している情報をまとめる
-        foreach ($lend_info as $recode) {
-            // 返金されていないデータのみ取得
-            if ($recode->status == 0) {
-                $lend_and_borrow_summary['lend'] += (int)$recode->money;
-            }
-        }
-        // 借りている情報をまとめる
-        foreach ($borrow_info as $recode) {
-            // 返金されていないデータのみ取得
-            if ($recode->status == 0) {
-                $lend_and_borrow_summary['borrow'] += (int)$recode->money;
-            }
-        }
-        // 合計値の算出  (-の場合借金、+の場合貸している)
-        $lend_and_borrow_summary['sum'] = $lend_and_borrow_summary['lend'] - $lend_and_borrow_summary['borrow'];
+        // 貸し借り情報から合計額を取得する
+        $lend_and_borrow_summary = $this->summary_lend_and_borrow($lend_info, $borrow_info);
         
         //その人への貸し借り情報別表示
         $records = array();
@@ -143,6 +122,7 @@ class Controller_lendborrow extends Controller_Common
         
         $this->view_data['records'] = $records;
         $this->view_data['lend_and_borrow_summary'] = $lend_and_borrow_summary;
+        $this->view_data['your_user_id'] = $your_user_id;
 
         $this->viewWrap('lendborrow/list', $your_user_prfile->user_name . 'さんへ');                
     }
@@ -336,6 +316,7 @@ class Controller_lendborrow extends Controller_Common
             $ins_data['money']    = $money;
             $ins_data['limit']    = $limit;
             $ins_data['memo']     = $memo;
+            $ins_data['owner_id'] = $this->user_profile_id;
             $ins_data['status']   = 0;
             
             $mng = $this->model_wrap->getModelInstance('Model_Lend_And_Borrow_Mng', $ins_data);
@@ -358,7 +339,184 @@ class Controller_lendborrow extends Controller_Common
     }
     
     
+    /**
+     * 通知設定
+     */
+    public function action_notice($your_user_id) {
+        //相手の情報を取得
+        $your_user_prfile = $this->model_wrap->call('Model_User_Profile','find','first',array(
+                'where' => array(
+                    array('id', '=', $your_user_id),
+                ),
+            ));
+
+        //貸している情報
+        $lend_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                'where' => array(
+                    array('lend_user_id', '=', $this->user_profile_id),
+                    array('borrow_user_id', '=', $your_user_id),
+                    array('status', '=', 0),
+                ),
+                'order_by' => array(
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
+                ),
+                'related' => array('category_mst'),
+            ));
+
+        
+        //借りている情報
+        $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                'where' => array(
+                    array('lend_user_id', '=', $your_user_id),
+                    array('borrow_user_id', '=', $this->user_profile_id),
+                    array('status', '=', 0),
+                ),
+                'order_by' => array(
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
+                ),
+                'related' => array('category_mst'),
+            ));
+
+        //状態を取得
+        $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
+
+        $this->view_data['lend']   = $lend_info;
+        $this->view_data['borrow'] = $borrow_info;
+        // 合計値の算出  (-の場合借金、+の場合貸している)
+        $this->view_data['lend_and_borrow_summary'] = $this->summary_lend_and_borrow($lend_info, $borrow_info);
+        $this->view_data['your_user_id'] = $your_user_id;
+        
+        $this->viewWrap('lendborrow/notice', '通知設定');
+    }
     
+    
+    public function action_notice_confirm() {
+        // 入力値チェック
+        $your_user_id  = \Input::post('your_user_id');
+        $notice_date   = \Input::post('notice_date');
+        $notice_now    = \Input::post('notice_now');
+        $notice_device = \Input::post('notice_device');
+        $notice_id     = \Input::post('notice');
+        
+        // 日付入力値チェック
+        if (empty($notice_now)) {
+            if (empty($notice_date) || date('Y/m/d H:i:s', $notice_date) > date('Y/m/d H:i:s')) {
+                // 即時反映
+                $notice_date = 0;
+            }            
+        } else {
+            // 即時反映
+            $notice_date = 0;            
+        }
+
+        // デバイスチェック
+        if (empty($notice_device) ) {
+            $notice_device = 'mail';
+        }
+        
+        
+        // ID チェック
+        if (empty($notice_id)) {
+            $notice_id = 'all';
+        }
+        
+        
+        // データ取得
+        if ($notice_id === 'all' || $notice_id === 'lend' || $notice_id === 'borrow') {
+            
+            if ($notice_id === 'all' || $notice_id === 'lend') {
+                //貸している情報
+                $lend_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                       'where' => array(
+                           array('lend_user_id', '=', $this->user_profile_id),
+                           array('borrow_user_id', '=', $your_user_id),
+                           array('status', '=', 0),
+                       ),
+                       'order_by' => array(
+                           array('status', 'ASC'),
+                           array('date', 'DESC'),
+                       ),
+                       'related' => array('category_mst'),
+                   ));                
+            }
+
+
+            if ($notice_id === 'all' || $notice_id === 'borrow') {
+                //借りている情報
+                $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                       'where' => array(
+                           array('lend_user_id', '=', $your_user_id),
+                           array('borrow_user_id', '=', $this->user_profile_id),
+                           array('status', '=', 0),
+                       ),
+                       'order_by' => array(
+                           array('status', 'ASC'),
+                           array('date', 'DESC'),
+                       ),
+                       'related' => array('category_mst'),
+                   ));
+            }
+            
+            if ($notice_id === 'all') {
+                // 合計値の算出  (-の場合借金、+の場合貸している)
+                $this->view_data['lend_and_borrow'] = $this->summary_lend_and_borrow($lend_info, $borrow_info);                
+            } else if ($notice_id === 'lend') {
+                $this->view_data['lend_and_borrow'] = $this->summary_lend_and_borrow($lend_info, array());                                
+            } else if ($notice_id === 'lend') {
+                $this->view_data['lend_and_borrow'] = $this->summary_lend_and_borrow(array(), $borrow_info);                                
+            }
+            
+            
+        } else {
+            $this->view_data['lend_and_borrow'] = array();
+        }
+        var_dump($this->view_data['lend_and_borrow']);
+        $this->view_data['your_user_id'] = $your_user_id;
+        
+        exit();
+    }
+    
+    public function action_notice_create() {
+        var_dump(\Input::post());
+        exit();
+    }
+    
+    /**
+     * 貸し借り情報を引数にし、+や-など全体的に借りているか貸しているかの合計を求める関数
+     * 
+     * @param type $lend_info
+     * @param type $borrow_info
+     */
+    private function summary_lend_and_borrow($lend_info, $borrow_info) {
+        // 合計で貸しているのか借りているのかを表示する
+        $lend_and_borrow_summary = array(
+                            'lend'   => 0,
+                            'borrow' => 0,
+                            'sum'    => 0,
+        );
+        // 貸している情報をまとめる
+        foreach ($lend_info as $recode) {
+            // 返金されていないデータのみ取得
+            if ($recode->status == 0) {
+                $lend_and_borrow_summary['lend'] += (int)$recode->money;
+            }
+        }
+        // 借りている情報をまとめる
+        foreach ($borrow_info as $recode) {
+            // 返金されていないデータのみ取得
+            if ($recode->status == 0) {
+                $lend_and_borrow_summary['borrow'] += (int)$recode->money;
+            }
+        }
+
+        // 合計値の算出  (-の場合借金、+の場合貸している)
+        $lend_and_borrow_summary['sum'] = $lend_and_borrow_summary['lend'] - $lend_and_borrow_summary['borrow'];
+       
+        return $lend_and_borrow_summary; 
+    }
+
     /*
      * 以下開発中
      */

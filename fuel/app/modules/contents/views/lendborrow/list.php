@@ -7,8 +7,12 @@
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
-        <div class="header-pre-btn float">
-            
+        <div class="head-right-btn float">
+            <!--
+            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'lendborrow/notice/' . $view_data['your_user_id'];?>">
+                通知設定
+            </a>
+            -->
         </div>
     </header>
 
@@ -31,16 +35,25 @@
                 <?php echo $view_data['lend_and_borrow_summary']['borrow'];?>円;
             </div>
         </div>
-        <div class="balance-sheet-comment">
-            <?php if ($view_data['lend_and_borrow_summary']['sum'] != 0): ?>
+        <?php if ($view_data['lend_and_borrow_summary']['sum'] != 0): ?>
+            <div class="balance-sheet-comment">
                 <?php $comment = ($view_data['lend_and_borrow_summary']['sum'] > 0)?'貸し':'借り';?>
                 現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
-            <?php else: ?>
+            </div>
+        <?php else: ?>
+        <!--
+            <div>
                 <span class="newline">現在貸し借りで、金額が相殺されています。</span>
                 <span class="newline">金額を相殺する場合は、状態を受取または</span>
                 <span class="newline">返済済みに変更して精算してください。</span>
-            <?php endif;?>
-        </div>
+            </div>
+            <div>
+                <form>
+                    <input type="submit" value="精算ボタン">
+                </form>
+            </div>
+        -->
+        <?php endif;?>
     </section>
     <?php endif;?>
 
@@ -61,7 +74,12 @@
         <?php if (count($view_data['records'][$type]) > 0): ?>
             <?php foreach ($view_data['records'][$type] as $records): ?>
                 <a href="<?php echo $view_data['base_url'] . 'lendborrow/detail/' . $type . '/' .$records->id;?>">
-                    <div class="user-record float-area">
+                    <?php $class_name = ''; ?>
+                    <?php if ($records->status == 1): ?>
+                        <?php $class_name = 'already-return-recode'; ?>
+                    <?php endif;?>
+                    
+                    <div class="user-record float-area <?php echo $class_name;?>">
                         <div class="recode-left w30p float">
                             <span class="newline">
                                 <?php echo date('Y年', $records->date); ?>

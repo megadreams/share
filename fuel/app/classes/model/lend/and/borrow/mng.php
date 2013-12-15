@@ -22,6 +22,7 @@ class Model_Lend_And_Borrow_Mng extends \Orm\Model
         'memo',
         'status',
         'limit',        
+        'owner_id',        
         'created_at',
         'updated_at'
     );

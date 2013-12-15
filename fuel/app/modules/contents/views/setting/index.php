@@ -27,6 +27,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div>
                 通知設定<br>
                 通知を受け取る、受け取らない<br>
@@ -34,9 +35,9 @@
                 <ul>
                     <li>メール</li>
                     <li>Facebook</li>
-                    <li>Twitter</li>                        
                 </ul>
             </div>
+            -->
         </section>
         
         <section>

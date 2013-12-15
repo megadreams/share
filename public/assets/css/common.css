@@ -4,8 +4,8 @@ body {
         margin:0px;
         padding:0px;
         text-align:center;
-        font-family: 'webフォント';
-font-size: 14px;
+        font-family: serif, 'webフォント';
+        font-size: 14px;
 }
 
 /* 回り込み設定 */ 
@@ -175,7 +175,8 @@ footer {
 .tab-on {
     color:black;
     font-size:16px;
-    background:rgba(255,255,255,0);
+    background: white;
+/*    background:rgba(255,255,255,0); */
     border-bottom:0px;
 }
 

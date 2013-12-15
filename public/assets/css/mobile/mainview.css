@@ -1,19 +1,19 @@
+body {
+    background: #F5F5F5;
+}
 
 /* ページヘッダー*/
 .header {
-background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #99dff5), color-stop(0.00, #02b0e6));
-background: -webkit-linear-gradient(#02b0e6, #99dff5);
-background: -moz-linear-gradient(#02b0e6, #99dff5);
-background: -o-linear-gradient(#02b0e6, #99dff5);
-background: -ms-linear-gradient(#02b0e6, #99dff5);
-background: linear-gradient(#02b0e6, #99dff5);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #99dff5), color-stop(0.00, #02b0e6));
+    background: -webkit-linear-gradient(#02b0e6, #99dff5);
+    background: -moz-linear-gradient(#02b0e6, #99dff5);
+    background: -o-linear-gradient(#02b0e6, #99dff5);
+    background: -ms-linear-gradient(#02b0e6, #99dff5);
+    background: linear-gradient(#02b0e6, #99dff5);
 
-
-
-
-        height:44px;
-        inner-height:40px;
-        color:white;
+    height:44px;
+    inner-height:40px;
+    color:white;
 }
 
 h1 {
@@ -69,13 +69,18 @@ footer {
 }
 /* ユーザ名に対する表示 */
 .user-record {
-        height: 55px;
-        border-bottom: 1px solid rgba(0,0,0,0.2);
-        box-shadow:0 1px 0 rgba(255,255,255,0.3);
-        padding: 5px;
-        margin: 5px 0px;
+    background: #FFF;
+    height: 55px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    box-shadow:0 1px 0 rgba(255,255,255,0.3);
+    padding: 5px;
+    margin: 5px;
 }
-
+/* 既に返却済みの場合は下記のスタイルを適用*/
+.already-return-recode {
+    background: rgba(240,240,240,0.9);
+    color: rgba(64,64,64,0.7);
+}
 
 .recode-left {
     text-align:left;
@@ -213,13 +218,14 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 * 貸し借りリストの表示の際の貸借表のスタイル
 */
 .balance-sheet {
+    background: #FFF;
     border: 1px dashed black;
     margin: 5px        
 }
 
 .balance-sheet-comment {
-    font-size: 12px;
-    color: gray;
+    font-size: 14px;
+    color: red;
     margin: 5px 0px;
 }
 
