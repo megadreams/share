@@ -35,6 +35,16 @@ class Controller_lendborrow extends Controller_Common
         
         //人別　貸し借り数の表示
         $records = array();
+        // 各ユーザで作成する
+        foreach ($user_friends as $user) {
+            $records[$user['id']] = array(
+                            'lend'      => 0,
+                            'borrow'    => 0,
+                            'sum'       => 0,
+                            'user_info' => $user_friends[$user['id']]
+                        );
+        }
+        
         // 貸している情報を取得
         foreach ($lend_info as $lend) {
             if (!isset($records[$lend->borrow_user_id])) {
