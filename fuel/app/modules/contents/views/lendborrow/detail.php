@@ -35,7 +35,11 @@
                         <?php echo $view_data['lendborrow_data']['category_name']; ?>
                     </th>
                     <td>
-                        <input name="money" value="<?php echo $view_data['lendborrow_data']['money']; ?>">円                   
+                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
+                            <input name="money" value="<?php echo $view_data['lendborrow_data']['money']; ?>">円                   
+                        <?php else: ?>
+                            <?php echo $view_data['lendborrow_data']['money']; ?>円
+                        <?php endif; ?>                            
                     </td>
                 </tr>
                 <tr>
@@ -43,13 +47,22 @@
                         状態
                     </th>
                     <td>
-                        <select name="status">
-                            <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
-                                <?php $selected = ((int)$view_data['lendborrow_data']['status'] === (int)$key)? 'selected':''; ?>
+                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
+                            <select name="status">
+                                <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
+                                    <?php $selected = ((int)$view_data['lendborrow_data']['status'] === (int)$key)? 'selected':''; ?>
 
-                                <option value="<?php echo $key; ?>" <?php echo $selected;?>><?php echo $value; ?></option>
-                            <?php endforeach;?>
-                        </select>                    
+                                    <option value="<?php echo $key; ?>" <?php echo $selected;?>><?php echo $value; ?></option>
+                                <?php endforeach;?>
+                            </select>   
+                        <?php else: ?>
+                            <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
+                                <?php if ((int)$view_data['lendborrow_data']['status'] === (int)$key):?>
+                                    <?php echo $value; ?>
+                                <?php endif;?>
+                            <?php endforeach;?>                            
+                        <?php endif; ?>
+                        
                     </td>
                 </tr>          
                 <tr>
@@ -57,7 +70,11 @@
                         メモ
                     </th>
                     <td>
-                        <textarea name="memo"><?php echo $view_data['lendborrow_data']['memo']; ?></textarea>                   
+                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
+                            <textarea name="memo"><?php echo $view_data['lendborrow_data']['memo']; ?></textarea>                   
+                        <?php else: ?>
+                            <?php echo $view_data['lendborrow_data']['memo']; ?>
+                        <?php endif; ?>
                     </td>
                 </tr>
             </table>
@@ -66,8 +83,10 @@
                 <input type="hidden" name="your_user_id"   value="<?php echo $view_data['lendborrow_data']['user_id'];?> ">
                 <input type="hidden" name="id"   value="<?php echo $view_data['lendborrow_data']['id'];?>">
                 <input type="hidden" name="type" value="<?php echo $view_data['type'];?>">
-                <button class="btn btn-blue" type="submit" name="edit">変更</button>
-                <button class="btn btn-red" type="submit" name="delete">削除</button>
+                <?php if ($view_data['lendborrow_data']['status'] == 0): ?>
+                    <button class="btn btn-blue" type="submit" name="edit">変更</button>
+                    <button class="btn btn-red" type="submit" name="delete">削除</button>
+                <?php endif; ?>
             </div>
         </form>
         <?php /*

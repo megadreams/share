@@ -37,7 +37,7 @@ body {
 /* 改行 */
 .newline { 
     display:block;
-    line-height:150%;
+    line-height:140%;
 }
 
 /* float時の横幅指定 */

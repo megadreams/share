@@ -338,6 +338,131 @@ class Controller_lendborrow extends Controller_Common
         
     }
     
+    /**
+     * 返済処理
+     */
+    public function action_adjustment($your_user_id) {
+        //相手の情報を取得
+        $your_user_prfile = $this->model_wrap->call('Model_User_Profile','find','first',array(
+            'where' => array(
+                array('id', '=', $your_user_id),
+            ),
+        ));
+        
+        //貸している情報
+        $lend_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                'where' => array(
+                    array('lend_user_id', '=', $this->user_profile_id),
+                    array('borrow_user_id', '=', $your_user_id),
+                    array('status', '=', 0),
+                ),
+                'order_by' => array(
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
+                ),
+                'related' => array('category_mst'),
+            ));
+        
+        //借りている情報
+        $borrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                'where' => array(
+                    array('lend_user_id', '=', $your_user_id),
+                    array('borrow_user_id', '=', $this->user_profile_id),
+                    array('status', '=', 0),
+                ),
+                'order_by' => array(
+                    array('status', 'ASC'),
+                    array('date', 'DESC'),
+                ),
+                'related' => array('category_mst'),
+            ));
+        
+        //状態を取得
+        $this->view_data['lendborrow_status'] = \Config::get('lendborrow_status');
+        
+        $this->view_data['lend']   = $lend_info;
+        $this->view_data['borrow'] = $borrow_info;
+        // 合計値の算出  (-の場合借金、+の場合貸している)
+        $this->view_data['lend_and_borrow_summary'] = $this->summary_lend_and_borrow($lend_info, $borrow_info);
+        $this->view_data['your_user_id'] = $your_user_id;
+        
+        $this->viewWrap('lendborrow/reimburse', '精算処理');
+
+    }
+    
+    /**
+     * 精算処理
+     */
+    public function action_adjustment_register() {
+        $create         = \Input::post('create');
+        
+        if ($create !== null) {
+            
+            // データの取得            
+            $recode          = \Input::post('recode');
+            $payment_price   = \Input::post('money');
+            $date            = \Input::post('date');
+            $receive_user_id = \Input::post('receive_user_id');
+            
+            //貸し借り情報の取得
+            $lendborrow_info = $this->model_wrap->call('Model_Lend_And_Borrow_Mng','find','all',array(
+                    'where' => array(
+                        array('id', 'IN', $recode),
+                        array('status', '=', 0),
+                    ),
+                ));
+                                
+            // 取得データと送信データに間違いはないか?
+            if (count($recode) != count($lendborrow_info)) {
+                //エラーページヘ
+                echo "error!!";
+                exit();
+            }
+            
+            $adjustment_price = 0;
+            $record_id_text = "";
+            foreach ($lendborrow_info as $info) {
+                
+                $record_id_text .= $info->id . ",";
+
+                // 自分が貸している
+                if ($info->lend_user_id == $this->user_profile_id) {
+                    $adjustment_price += $info->money;
+                } else {
+                    $adjustment_price -= $info->money;                    
+                }
+            }
+
+            
+            // 精算履歴を残す
+            $ins_data = array();
+            $ins_data['lend_and_borrow_mng_id']     = $record_id_text;
+            $ins_data['register_user_id']           = $this->user_profile_id;
+            $ins_data['receive_user_id']            = $receive_user_id;
+            $ins_data['adjustment_diff_record_id']  = null;
+            $ins_data['adjustment_price']           = $adjustment_price;
+            $ins_data['payment_price']              = $payment_price;
+            $ins_data['date']                       = strtotime($date);
+            $ins_data['memo']                       = null;
+
+            
+            $adjustment_report = $this->model_wrap->getModelInstance('Model_Adjustment_report', $ins_data);
+            
+            try {
+                $adjustment_report->save();
+                // ステータスを変更して保存
+                foreach ($lendborrow_info as $info) {
+                    $info->status = 1;
+                    $info->save();
+                }
+            } catch (Exception $ex) {
+
+            }
+        }
+        //リダイレクト
+        \Response::redirect($this->view_data['base_url'] . 'lendborrow/list/' . $receive_user_id);        
+    }
+    
     
     /**
      * 通知設定

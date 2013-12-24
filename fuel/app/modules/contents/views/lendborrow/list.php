@@ -1,20 +1,64 @@
     <header class="header float-area">
         <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/top/'; ?>">
             <div class="header-back-btn float">
-                TOPへ
+                トップへ
             </div>
         </a>
         <div class="head-title float">
             <h1><?php echo $title; ?></h1>
         </div>
         <div class="head-right-btn float">
-            <!--
-            <a class="lendborrow-add-btn" href="<?php echo $view_data['base_url'] . 'lendborrow/notice/' . $view_data['your_user_id'];?>">
-                通知設定
+            <a class="lendborrow-add-btn list-menu">
+                メニュー
             </a>
-            -->
         </div>
     </header>
+    <section class="modal-view">
+        <div class="modal-menu">
+            <h1>メニュー</h1>
+            <div>
+                項目を選択して下さい
+            </div>
+            <ul>
+                <a href="<?php echo $view_data['base_url'] . 'lendborrow/create';?>">
+                    <li>
+                        追加
+                    </li>
+                </a>
+                <a href="<?php echo $view_data['base_url'] . 'lendborrow/adjustment/' , $view_data['your_user_id'];?>">
+                    <li>
+                        返済処理 
+                    </li>
+                </a>
+                <!--
+                <a href="<?php echo $view_data['base_url'] . 'lendborrow/adjustment/' , $view_data['your_user_id'];?>">
+                -->
+                    <li>
+                        返済履歴
+                    </li>
+                <!--
+                </a>
+                <a href="<?php echo $view_data['base_url'] . 'lendborrow/notice/' . $view_data['your_user_id'];?>">
+                -->
+                    <li>
+                        通知設定
+                    </li>
+                <!--
+                </a>
+                -->
+            </ul>
+        </div>
+    </section>
+    <script>
+        $(".modal-view").click(function() {
+             $(this).hide();
+        });
+
+        $(".list-menu").click(function() {
+             $(".modal-view").show();
+        });
+        
+    </script>
 
     <?php //現在の貸し借り状況を確認できるようにする ?>
     <?php if($view_data['lend_and_borrow_summary']['lend'] > 0 || $view_data['lend_and_borrow_summary']['borrow'] > 0): ?>
@@ -86,8 +130,7 @@
                             </span>  
                             <span class="newline">
                                 <?php echo date('n月j日', $records->date); ?>
-                            </span>  
-
+                            </span>
                         </div>
 
                         <div class="recode-center w50p float">
