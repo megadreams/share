@@ -72,7 +72,7 @@ class Controller_lendborrow extends Controller_Common
             $records[$borrow->lend_user_id]['borrow'] += (int)$borrow->money;
             $records[$borrow->lend_user_id]['sum'] -= (int)$borrow->money;
         }
-        
+
         $this->view_data['records'] = $records;
         $this->viewWrap('lendborrow/index', '貸し借りリスト');
     }

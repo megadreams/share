@@ -1,0 +1,103 @@
+/* スワイプ設定 */
+.swiper-container {
+    height:280px;
+}
+
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background: #999;
+  box-shadow: 0px 1px 2px #555 inset;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #fff;
+}   
+
+
+.pagination {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* ゲーム開始ボタン */
+.start-area {
+    margin-top:40px;
+}
+.start-btn {
+    width: 90%;
+    height: 44px;
+    font-size: 100%;
+    border-radius: 15px;    
+    color:white;
+}
+
+
+
+
+/* ===== ログイン画面 ===== */
+/* == かしかり管理アカウント == */
+.my-account {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    box-shadow:0 1px 0 rgba(255,255,255,0.3);
+    margin:0px 5px;
+}
+
+/* パスワード忘れ*/
+.forgot-password {
+    padding: 5px;
+    background: rgba(179, 179, 179, 0.52);
+    width: 90%;
+    margin: 10px auto;    
+}
+.forgot-password a {
+    color:gray;
+}
+
+/* ログイン情報入力 */
+.login-table {
+    width:98%;
+    margin:0px auto;
+}
+.login-table th {
+    background: rgba(155, 155, 155, 0.25);
+    border: 1px solid gray;
+    font-size:90%;
+    font-weight: normal;
+}
+.login-table td {
+    border: 1px solid gray;
+}
+.login-table td input{
+    background: rgba(255,212,121,0.22);
+    width:93%;
+    font-size:13px;
+}
+/* == 外部SNSアカウント == */
+.sns-account {
+    margin: 10px auto;
+}
+.sns-btn {
+    margin-top: 5px;
+}
+
+.about-kashikari {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #09c300), color-stop(1.00, #004c15));
+    background: -webkit-linear-gradient(#09c300, #004c15);
+    background: -moz-linear-gradient(#09c300, #004c15);
+    background: -o-linear-gradient(#09c300, #004c15);
+    background: -ms-linear-gradient(#09c300, #004c15);
+    background: linear-gradient(#09c300, #004c15);
+    height: 27px;
+    width: 100%;
+    padding-top: 5px;
+    margin: 0px;
+    position: absolute;
+    bottom: 5px;
+    color: white;
+}
