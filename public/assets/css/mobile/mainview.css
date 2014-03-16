@@ -27,27 +27,15 @@ h1 {
     line-height: 11;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+/* ==== ヘッダー部のCSS =====*/
 .head-title {
     width:60%;
 }
 .head-left-btn {
     width:20%;    
-    padding-top:10px;
 }
 .head-right-btn {
     width:20%; 
-    padding-top:10px;
 }
 
 
@@ -59,6 +47,25 @@ h1 {
 .header-cansel {
     width:20%;
 }
+
+
+
+/* 貸し借り追加ボタン */
+.lendborrow-add-btn {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    cursor:pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
 .create-pre-btn {
     visibility : hidden;
 }
@@ -217,15 +224,6 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
     font-size: 22px;
 }
 
-/**
-* 貸し借り追加ボタン
-*/
-.lendborrow-add-btn {
-    text-decoration: none;
-    color: white;
-    padding: 5px;
-    cursor:pointer;
-}
 
 /**
 * 貸し借りリストの表示の際の貸借表のスタイル
