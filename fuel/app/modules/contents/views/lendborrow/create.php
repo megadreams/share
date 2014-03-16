@@ -19,13 +19,13 @@
     font-size:50%;
 }
 .number-btn {
-width: 44px;
-height: 44px;
-border-radius: 22px;
+width: 60px;
+height: 60px;
+border-radius: 30px;
 box-shadow: 2px 2px 1px #808080;
 display: block;
-margin: 5px;
-line-height: 50px;  
+margin: 3px;
+line-height: 68px;
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
 background: -webkit-linear-gradient(#efe457, #feae31);
 background: -moz-linear-gradient(#efe457, #feae31);
@@ -37,12 +37,12 @@ color:black;
 }
 .number-clear {
     width: 120px;
-    height: 44px;
+    height: 50px;
     border-radius: 22px;
     box-shadow: 2px 2px 1px #808080;
     display: block;
-    margin: 5px;
-    line-height: 50px;  
+    margin: 10px;
+    line-height: 54px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
     background: -webkit-linear-gradient(#efe457, #feae31);
     background: -moz-linear-gradient(#efe457, #feae31);
