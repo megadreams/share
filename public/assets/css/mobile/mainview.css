@@ -44,8 +44,9 @@ h1 {
     padding-top:10px;
     color:white;
 }
-.header-cansel {
-    width:20%;
+.cansel-btn {
+    font-size: 80%;
+    padding-top: 5px;
 }
 
 
@@ -60,7 +61,14 @@ h1 {
     font-size: 12px;
 }
 
-
+.tutorial-top {
+    background-image: url('/assets/img/logo.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 150px;
+    padding-top: 150px;
+    font-weight: bold;
+}
 
 
 
@@ -183,7 +191,8 @@ background: radial-gradient(50% 46%, circle, #ffa443, #ff7400);
 }
 
 .add-friend-area {
-    margin-top: 20px;    
+    margin-top: 20px;
+    padding:10px;
 }
 
 

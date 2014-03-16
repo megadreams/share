@@ -1,4 +1,60 @@
-    <header class="header float-area">
+<style>
+.status-select {
+    position:absolute;
+    width:50%;
+    height:440px;
+}
+.borrow-area {
+    left : 0%;
+}
+.lend-area {
+    left : 50%;
+    
+}
+.tutorial-top {
+    height: 80px;
+    padding-top: 80px;
+}
+.small {
+    font-size:50%;
+}
+.number-btn {
+width: 44px;
+height: 44px;
+border-radius: 22px;
+box-shadow: 2px 2px 1px #808080;
+display: block;
+margin: 5px;
+line-height: 50px;  
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
+background: -webkit-linear-gradient(#efe457, #feae31);
+background: -moz-linear-gradient(#efe457, #feae31);
+background: -o-linear-gradient(#efe457, #feae31);
+background: -ms-linear-gradient(#efe457, #feae31);
+background: linear-gradient(#efe457, #feae31);
+
+color:black;
+}
+.number-clear {
+    width: 120px;
+    height: 44px;
+    border-radius: 22px;
+    box-shadow: 2px 2px 1px #808080;
+    display: block;
+    margin: 5px;
+    line-height: 50px;  
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
+    background: -webkit-linear-gradient(#efe457, #feae31);
+    background: -moz-linear-gradient(#efe457, #feae31);
+    background: -o-linear-gradient(#efe457, #feae31);
+    background: -ms-linear-gradient(#efe457, #feae31);
+    background: linear-gradient(#efe457, #feae31);
+
+    color:black;
+    
+}
+</style>
+<header class="header float-area">
         <div class="head-left-btn cansel-btn float">
             キャンセル
         </div>
@@ -13,14 +69,14 @@
     <div class="create-status">
         <span id="step1" class="index-status status-active">貸借</span> ->
         <span id="step2" class="index-status">お相手</span> -> 
-        <span id="step3" class="index-status">カテゴリ</span> -> 
+        <span id="step3" class="index-status">金額</span> -> 
         <span id="step4" class="index-status">日付</span> -> 
-        <span id="step5" class="index-status">その他</span>
+        <span id="step5" class="index-status">確認</span>
     </div>
     <form action="" method="POST">
         <div class="create-view">
             <section class="create-view page">
-                <h1>状況を選択してください</h1>
+                <h1 class="p10">状況を選択してください</h1>
                 <div class="float-area">
                     <div class="float w50p">
                         <label>
@@ -36,6 +92,8 @@
                     </div>
                 </div>
                 <div style="zoom: 0.5;">
+                    <div class="status-select borrow-area"></div>
+                    <div class="status-select lend-area"></div>
                     <?php echo Asset::img('create/lendborrow.gif');?>
                 </div>
                 <div class="float-area">
@@ -51,7 +109,7 @@
 
             <section class="create-view page non-display">                   
                 <header>
-                    <h1>
+                    <h1 class="p10">
                         誰に<span class="type-text"></span>いますか？
                     </h1>
                 </header>
@@ -77,18 +135,21 @@
                             </label>
                         <?php endforeach; ?>
                     <?php else: ?>
+                        <div class="tutorial-top">
+                            ユーザがいません
+                        </div>
                         <div>
                             <span class="newline">
-                                現在アプリ内の友達はいません。
+                                外部サービスを利用して
                             </span>
                             <span class="newline">
-                                下のボタンより友達を検索してください。                            
+                                友達を検索して下さい。                            
                             </span>
                         </div>                
                     <?php endif;?>
                 </div>
                 <div class="add-friend-area">
-                    <a href="#modal-view" rel="leanModal">
+                    <a href="#modal-view" rel="leanModal" class="btn btn-blue">
                         友達を探す
                     </a>                
                 </div>
@@ -105,11 +166,11 @@
 
             <section class="create-view page non-display">
                 <header>
-                    <h1>
-                        <span class="type-text"></span>いるものを選択してください
+                    <h1 class="p10">
+                        <span class="type-text"></span>いる金額を入力して下さい
                     </h1>
                 </header>
-                <div class="create-friend-list">
+                <div class="create-friend-list hide">
                     <?php foreach($view_data['category'] as $category): ?>
                         <label>
                             <div class="create-record float-area">
@@ -132,7 +193,50 @@
                 <div class="create-input-box">
                     <div class="input-box float-area">
                         <span class="w30p float">金額</span>
-                        <input class="w60p text-right" type="tel" name="money" value="0">
+                        <input class="w60p text-right" type="text" name="money" value="0" readonly>
+                    </div>
+                    <div style="margin-left: 15%;">
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">7</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">8</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">9</span>
+                            </div>
+                        </div>
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">4</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">5</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">6</span>
+                            </div>
+                        </div>                        
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">1</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">2</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">3</span>
+                            </div>
+                        </div>                       
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">0</span>
+                            </div>
+                            <div class="w60p float">
+                                <span class="number-clear">clear</span>
+                            </div>
+                        </div>                        
                     </div>
                </div> 
                 <div class="float-area">
@@ -147,7 +251,7 @@
             
             <section class="create-view page non-display">
                 <header>
-                    <h1>
+                    <h1 class="p10">
                         貸し借りした日付を選択してください
                     </h1>
                 </header>
@@ -207,18 +311,40 @@
         <h2>友達を探す</h2>
         
         <div>
-            <span class="newline"> 
-                Facebookから友達リストを取得します。
-            </span>
-            <button class="add-friends btn-info" value="facebook">
-                Facebook
-            </button>
+            <span class="newline">外部サービスから</span>
+            <span class="newline">友達リストを取得します</span>
         </div>
-        <div>
-            <span class="newline"> 
-                貸し借り管理アプリの友達を取得します。（デフォルトでは、こちらの友達リストが表示されています。）
-            </span>
-            <button class="add-friends btn-info" value="default">
+        <div class="sns-select m10">
+            <div class="float-area">
+                <div class="w50p float sns-btn">
+                    <button class="add-friends btn-info w90p btn facebook-btn" value="facebook">
+                        Facebook
+                    </button>
+                </div>
+                <div class="w50p float sns-btn">
+                        <button class="hide w90p btn twitter-btn">
+                            Twitter
+                        </button>
+                </div>            
+            </div>
+            <div class="float-area hide">
+                <div class="w50p float sns-btn">
+                        <button class="w90p btn gray-btn">
+                            Google
+                        </button>
+                </div>                     
+
+                <div class="w50p float sns-btn">
+                        <button class="w90p btn gray-btn">
+                            Yahoo!
+                        </button>
+                </div>            
+            </div>            
+        </div>        
+        <div class="m10">
+            <span class="newline">既存の友達を取得します</span>
+            <span class="newline small">最初はこちらの友達リストが表示されています。</span>
+            <button class="add-friends btn-info btn btn-green" value="default">
                 既存アプリ
             </button>
         </div>
@@ -246,14 +372,24 @@ $(function() {
     //１つ前に戻るボタンは、初期ページ以外で表示
     $('.pre-btn').css("visibility","hidden");
     
-    
+    $('.status-select').click(function(){
+        if ($(this).hasClass('borrow-area')) {
+            $('input[name=type]').val(['borrow']);
+        } else if ($(this).hasClass('lend-area')) {
+            $('input[name=type]').val(['lend']);
+        } else {
+            
+        }
+        $('input[name=type]:checked').trigger('click');        
+    });
     //次のページへの遷移設定
     $(".next-btn").click(function() {
         // ページが変わる際には入力値チェックを行う
         if (validationCheck(nowpage) === false){
             alert("データを入力してください");
             return false;
-        }        var tmp_page = nowpage;
+        }
+        var tmp_page = nowpage;
         nowpage++;
         changePage(tmp_page, nowpage);        
     });
@@ -317,7 +453,20 @@ $(function() {
     //モーダルの初期化
     modalInit();
     
-
+    
+    // 金額入力時の処理
+    $('.number-btn').click(function() {
+        var num = Number($(this).text());
+        var money = Number($('input[name=money]').val());
+        if (!isFinite(money) || money === 0) {
+            money = '';
+        }
+        money = money + num.toString();
+        $('input[name=money]').val(money);
+    });
+    $('.number-clear').click(function(){
+        inputDefaultText('input[name="money"]', '金額を入力');
+    });
 
 
     $('.add-friends').click(function(){
