@@ -455,7 +455,7 @@ $(function() {
     
     
     // 金額入力時の処理
-    $('.number-btn').click(function() {
+    $('.number-btn').bind('touchend',function() {
         var num = Number($(this).text());
         var money = Number($('input[name=money]').val());
         if (!isFinite(money) || money === 0) {
@@ -464,7 +464,7 @@ $(function() {
         money = money + num.toString();
         $('input[name=money]').val(money);
     });
-    $('.number-clear').click(function(){
+    $('.number-clear').bind('touchend',function(){
         inputDefaultText('input[name="money"]', '金額を入力');
     });
 
