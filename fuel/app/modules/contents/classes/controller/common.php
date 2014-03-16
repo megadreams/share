@@ -28,11 +28,14 @@ class Controller_Common extends \Controller_Template {
 
         //ユーザエージェントを用いてPC版とスマフォ版のビューを切り替える
         $this->agent = $this->lib_util->getAgentList();
+        /*
         if ($this->agent['mobile'] === 'true') {
             $this->template = 'template_mobile';
         } else {
             $this->template = 'template_pc';        
         }
+         */
+            $this->template = 'template_mobile';
         //親クラスのbeforeを呼び出して, $this->templateを使えるようにしてもらう
         parent::before();
         

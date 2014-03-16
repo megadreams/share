@@ -193,7 +193,7 @@ color:black;
                 <div class="create-input-box">
                     <div class="input-box float-area">
                         <span class="w30p float">金額</span>
-                        <input class="w60p text-right" type="text" name="money" value="0" readonly>
+                        <input class="w60p text-right" type="text" name="money" value="0">
                     </div>
                     <div style="margin-left: 15%;">
                         <div class="float-area">

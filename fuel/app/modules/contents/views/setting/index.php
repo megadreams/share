@@ -12,19 +12,22 @@
         </div>
     </header>
 
-    <section class="records">
+    <section>
         <section>
             <header>
-                <h1>ユーザ情報</h1>
+                <h1 class="p10">ユーザ情報</h1>
             </header>
             <div class="float-area m10">
                 <div class="w30p float">
                     <img src="<?php echo $view_data['user_info']['img_url'];?>" alt="プロフィール画像">
                 </div>
-                <div class="w50p float">
-                    <div>
-                        名前：<?php echo $view_data['user_info']['user_name'];?>
-                    </div>
+                <div class="w50p float text-left">
+                    <span class="newline">
+                        名　前：<?php echo $view_data['user_info']['user_name'];?>
+                    </span>
+                    <span class="newline">
+                        メール：未登録
+                    </span>
                 </div>
             </div>
             <!--
@@ -42,25 +45,34 @@
         
         <section>
             <header>
-                <h1>アカウント設定</h1>
+                <h1 class="p10">外部アカウントとヒモ付</h1>
             </header>
-            <div>
-                複数のアカウントとこのユーザをひもづける場合は、下記SNSよりログインして下さい。
-            </div>
-            <ul>
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Google</li>                
-                <li>gitHub</li>
-            </ul>
+            <table class="w90p mauto">
+                <tr>
+                    <th>Facebook</th>
+                    <td>認証済み</td>
+                </tr>
+                <tr>
+                    <th>Twitter</th>
+                    <td>準備中</td>
+                </tr>
+                <tr>
+                    <th>Google</th>
+                    <td>準備中</td>
+                </tr>
+                <tr>
+                    <th>Yahoo!</th>
+                    <td>準備中</td>
+                </tr>
+            </table>
         </section>
         
         <section>
             <header>
-                <h1>ログアウト</h1>
+                <h1 class="p10">ログアウト</h1>
             </header>
             <div>
-                <a href="<?php echo $view_data['base_url'] . 'auth/logout/facebook';?>">
+                <a href="<?php echo $view_data['base_url'] . 'auth/logout/facebook';?>" class="btn btn-red">
                     ログアウト
                 </a>
             </div>        

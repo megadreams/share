@@ -41,7 +41,8 @@ h1 {
 
 .header-back-btn {
     width:20%;
-    padding-top:10px;
+    padding-top:4px;
+    font-size:80%;
     color:white;
 }
 .cansel-btn {
