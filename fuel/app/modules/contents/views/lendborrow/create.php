@@ -468,6 +468,7 @@ $(function() {
         if (mm < 10) { mm = "0" + mm; }
         if (dd < 10) { dd = "0" + dd; }
         $( '.datepicker-day' ).val(yy + "/" + mm + "/" + dd);
+        $( '.datepicker-limit' ).val(yy + "/" + mm + "/" + dd);
         $( '.datepicker-day' ).attr("placeholder", yy + "/" + mm + "/" + dd);
         $( '.datepicker-limit' ).attr("placeholder", yy + "/" + mm + "/" + dd);
     }, 1);
