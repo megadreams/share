@@ -166,13 +166,6 @@ background: linear-gradient(#3d8c39, #203625);
 
 
 
-footer {
-    position: absolute;
-    bottom: 0px;  /*iPhoneの高さバー*/
-    left: 0px;
-    width: 100%;
-    height:70px;
-}
 .iphone-footer {
     bottom: -60px;  /*iPhoneの高さバー*/    
 }

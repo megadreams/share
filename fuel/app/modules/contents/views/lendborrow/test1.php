@@ -1,7 +1,7 @@
 <header class="header ">
         <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $view_data['your_user_id']; ?>">
             <div class="header-back-btn float">
-                戻る
+                
             </div>
         </a>
         <div class="head-title float">
@@ -12,6 +12,11 @@
         </div>
     </header>
     <section class=" detail">
+        <header style="padding:20px 0px">
+            柏原 祐希さんから中村　恵さんへ<br>
+            かしかり情報のお知らせです。
+            
+        </header>
         <form action="<?php echo $view_data['base_url'] . 'lendborrow/edit';?>" method="POST">
             <table class="lendborrow-table">
                 <tr>
@@ -24,7 +29,7 @@
                 </tr>
                 <tr>
                     <th>
-                        <?php echo ($view_data['type'] === 'lend')?'貸している人':'借りている人' ?>
+                        借りている人
                     </th>
                     <td>
                         <?php echo $view_data['lendborrow_data']['user_name']; ?>さん                    
@@ -35,11 +40,15 @@
                         <?php echo $view_data['lendborrow_data']['category_name']; ?>
                     </th>
                     <td>
+                        <?php /*
+                        
                         <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
                             <input name="money" value="<?php echo $view_data['lendborrow_data']['money']; ?>">円                   
                         <?php else: ?>
                             <?php echo $view_data['lendborrow_data']['money']; ?>円
                         <?php endif; ?>                            
+                         */?>
+                            <?php echo $view_data['lendborrow_data']['money']; ?>円
                     </td>
                 </tr>
                 <tr>
@@ -47,37 +56,21 @@
                         状態
                     </th>
                     <td>
-                        <?php /*
-                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
-                            <select name="status">
-                                <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
-                                    <?php $selected = ((int)$view_data['lendborrow_data']['status'] === (int)$key)? 'selected':''; ?>
-
-                                    <option value="<?php echo $key; ?>" <?php echo $selected;?>><?php echo $value; ?></option>
-                                <?php endforeach;?>
-                            </select>   
-                        <?php else: ?>
-                        */ ?>
-                            <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
-                                <?php if ((int)$view_data['lendborrow_data']['status'] === (int)$key):?>
-                                    <?php echo $value; ?>
-                                    <input type="hidden" name="status" value="$view_data['lendborrow_data']['status']">
-                                <?php endif;?>
-                            <?php endforeach;?>
-                        <?php /*                        
-                        <?php endif; ?>
-                        */ ?>
-                        
+                        借りている
                     </td>
                 </tr>
                 <tr>
                     <th>返却期限</th>
                     <td>
+                        <?php /*
                         <?php if ($view_data['lendborrow_data']['limit'] == 0): ?>
                             設定なし
                         <?php else:?>
                             <?php echo $view_data['lendborrow_data']['limit'];?>
                         <?php endif;?>
+                         */ ?>
+                        <span style="color:red;font-weight: bold;">2014年4月17日</span>
+                        
                     </td>
                 </tr>                                       
                 <tr>
@@ -85,14 +78,38 @@
                         メモ
                     </th>
                     <td>
+                        <?php /*
                         <?php if ($view_data['lendborrow_data']['status'] == 0): ?>
                             <textarea name="memo" maxlength="20"><?php echo $view_data['lendborrow_data']['memo']; ?></textarea>                   
                         <?php else: ?>
                             <?php echo $view_data['lendborrow_data']['memo']; ?>
                         <?php endif; ?>
+                        */ ?>
+                            <?php echo $view_data['lendborrow_data']['memo']; ?>
                     </td>
                 </tr>
             </table>
+            <div>
+                <br>
+                <span style="color:red;font-weight: bold;">返済期限が迫っています。</span><br>
+                <span style="color:red;font-weight: bold;">中村　恵さんへ500円支払いましょう。</span><br>
+                
+            </div>
+
+            <div style="padding:20px 0px;font-size:80%;">
+                こちらは、『かしかり管理』アプリで登録された内容です。<br>
+                詳細を見るためには、下記URLよりアクセスしてください。<br>
+            </div>
+            <div style="padding:10px 0px;">
+                <button class="w50p btn btn-green">かしかり管理へ</button>
+                <br>
+                <br>
+                <a href="" style="color:blue;border-bottom:1px solid blue;">かしかりとは？</a>
+                
+            </div>
+                
+        <!--
+                
             <div class="m10">
                 <input type="hidden" name="your_user_id"   value="<?php echo $view_data['lendborrow_data']['user_id'];?> ">
                 <input type="hidden" name="id"   value="<?php echo $view_data['lendborrow_data']['id'];?>">
@@ -102,6 +119,7 @@
                     <button class="btn btn-red w40p" type="submit" name="delete">削除</button>
                 <?php endif; ?>
             </div>
+        -->
         </form>
         <?php /*
             <?php if (isset($view_data['send_info']) === false):?>

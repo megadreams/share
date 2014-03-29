@@ -187,7 +187,7 @@ class Controller_lendborrow extends Controller_Common
         $this->view_data['message'] = $message;
         
 
-        $this->viewWrap('lendborrow/detail');          
+        $this->viewWrap('lendborrow/test');          
     }
     
     public function action_edit() {

@@ -145,7 +145,7 @@ color:black;
                                         <input id="your-user-name<?php echo $user_friends['id'];?>"type="hidden"  value="<?php echo $user_friends['user_name'];?>">
                                     </div>
                                     <div class="w20p record-img float">
-                                        <img src="<?php echo $user_friends['img_url'];?>" alt="プロフィール画像">
+                                        <img src="<?php echo $user_friends['img_url'];?>" width="50px;" alt="プロフィール画像">
                                     </div>
 
                                     <div class="w70p text-left float">
@@ -630,7 +630,7 @@ $(function() {
                                          <input id="your-user-name' + data['data'][i]['id'] + '"type="hidden"  value="' + data['data'][i]['name'] + '">\
                                      </div>\
                                      <div class="w20p record-img float">\
-                                         <img src="' + data['data'][i]['img_url'] + '" alt="プロフィール画像">\
+                                         <img src="' + data['data'][i]['img_url'] + '" width="50px" alt="プロフィール画像">\
                                      </div>\
                                      <div class="w70p text-left float">\
                                          ' + data['data'][i]['name'] + '\

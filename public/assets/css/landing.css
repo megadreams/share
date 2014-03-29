@@ -28,10 +28,8 @@ header {
 footer {
     background: #6D4A37;
     color:white;
-    height: 52px;
+    padding-top:15px;
     width:100%;
-    line-height: 48px;
-    color:white;
 }
 footer a {
     text-decoration: none;

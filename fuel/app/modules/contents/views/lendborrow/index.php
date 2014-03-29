@@ -50,7 +50,7 @@
                 <a href="<?php echo $view_data['base_url'] . 'lendborrow/list/' . $records['user_info']['id'];?>">
                     <div class="user-record float-area">
                         <div class="recode-left w20p float">
-                            <img src="<?php echo $records['user_info']['img_url'];?>" alt="プロフィール画像">
+                            <img src="<?php echo $records['user_info']['img_url'];?>" width="50px" alt="プロフィール画像">
                         </div>
                         <div class="recode-center w50p float">
                             <span><?php echo $records['user_info']['user_name']; ?></span>
