@@ -6,9 +6,22 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="apple-touch-startup-image" href="startup.png">
-        <title>PC TOP</title>
+        <title>貸し借り管理</title>
     </head>
     <body>
-        PCサイトはただいま準備中です。
+        <header>
+            
+        </header>
+        <?php echo $content;?>
+        <footer>
+            <p>
+                <small>
+                    Copyright &copy; 2013
+                    <a href="http://megadreams14.com/">megadreams14</a>
+                    All Rights Reserved.
+                </small>
+                
+            </p>
+        </footer>
     </body>
 </html>

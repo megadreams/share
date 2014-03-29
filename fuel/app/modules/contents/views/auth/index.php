@@ -79,7 +79,7 @@
     </div>
     <div class="pagination"></div>
     <div class="start-area">
-        <button class="start-btn green-btn">
+        <button class="start-btn btn-green">
             今すぐ開始
         </button>    
     </div>
@@ -112,10 +112,10 @@
         </div>
         <div class="float-area">
             <div class="w50p float">
-                <button class="btn w90p gray-btn">新規登録</button>
+                <button class="btn w90p btn-gray">新規登録</button>
             </div>
             <div class="w50p float">
-                <button class="btn w90p orange-btn">ログイン</button>                    
+                <button class="btn w90p btn-orange">ログイン</button>                    
             </div>            
         </div>
         <div class="forgot-password">
@@ -144,13 +144,13 @@
             </div>
             <div class="float-area hide">
                 <div class="w50p float sns-btn">
-                        <button class="w90p btn gray-btn">
+                        <button class="w90p btn btn-gray">
                             Google
                         </button>
                 </div>                     
 
                 <div class="w50p float sns-btn">
-                        <button class="w90p btn gray-btn">
+                        <button class="w90p btn btn-gray">
                             Yahoo!
                         </button>
                 </div>            

@@ -68,8 +68,10 @@ body {
     height: 44px;
     font-size: 100%;
     border-radius: 15px;
+    border:1px solid gray;
+    cursor: pointer;
 }
-.gray-btn {
+.btn-gray {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #fff), color-stop(1.00, #969696));
     background: -webkit-linear-gradient(#fff, #969696);
     background: -moz-linear-gradient(#fff, #969696);
@@ -78,16 +80,17 @@ body {
     background: linear-gradient(#fff, #969696);
     
 }
-.green-btn {
+.btn-green {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2eeb25), color-stop(1.00, #266036));
     background: -webkit-linear-gradient(#2eeb25, #266036);
     background: -moz-linear-gradient(#2eeb25, #266036);
     background: -o-linear-gradient(#2eeb25, #266036);
     background: -ms-linear-gradient(#2eeb25, #266036);
     background: linear-gradient(#2eeb25, #266036);
+    color:white;    
 }
 
-.orange-btn {
+.btn-orange {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #f3ce00), color-stop(1.00, #ff7800));
     background: -webkit-linear-gradient(#f3ce00, #ff7800);
     background: -moz-linear-gradient(#f3ce00, #ff7800);
@@ -96,6 +99,41 @@ body {
     background: linear-gradient(#f3ce00, #ff7800);
     color:white;
 }
+
+.yellow-btn {
+    
+}
+
+.btn-blue {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2c7bff), color-stop(1.00, #021ecd));
+    background: -webkit-linear-gradient(#2c7bff, #021ecd);
+    background: -moz-linear-gradient(#2c7bff, #021ecd);
+    background: -o-linear-gradient(#2c7bff, #021ecd);
+    background: -ms-linear-gradient(#2c7bff, #021ecd);
+    background: linear-gradient(#2c7bff, #021ecd);
+    color:white;
+}
+
+.btn-red {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #ff5a00), color-stop(1.00, #cd0000));
+    background: -webkit-linear-gradient(#ff5a00, #cd0000);
+    background: -moz-linear-gradient(#ff5a00, #cd0000);
+    background: -o-linear-gradient(#ff5a00, #cd0000);
+    background: -ms-linear-gradient(#ff5a00, #cd0000);
+    background: linear-gradient(#ff5a00, #cd0000);
+    color:white;
+}
+/*
+.btn-green {
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #3d8c39), color-stop(1.00, #203625));
+background: -webkit-linear-gradient(#3d8c39, #203625);
+background: -moz-linear-gradient(#3d8c39, #203625);
+background: -o-linear-gradient(#3d8c39, #203625);
+background: -ms-linear-gradient(#3d8c39, #203625);
+background: linear-gradient(#3d8c39, #203625);
+    color:white;
+}
+*/
 
 .facebook-btn {
     background: rgb(73, 96, 184);
@@ -281,35 +319,7 @@ footer {
     margin:5px;
     padding:5px 10px;
 }
-.btn-blue {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2c7bff), color-stop(1.00, #021ecd));
-    background: -webkit-linear-gradient(#2c7bff, #021ecd);
-    background: -moz-linear-gradient(#2c7bff, #021ecd);
-    background: -o-linear-gradient(#2c7bff, #021ecd);
-    background: -ms-linear-gradient(#2c7bff, #021ecd);
-    background: linear-gradient(#2c7bff, #021ecd);
-    color:white;
-}
 
-.btn-red {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #ff5a00), color-stop(1.00, #cd0000));
-    background: -webkit-linear-gradient(#ff5a00, #cd0000);
-    background: -moz-linear-gradient(#ff5a00, #cd0000);
-    background: -o-linear-gradient(#ff5a00, #cd0000);
-    background: -ms-linear-gradient(#ff5a00, #cd0000);
-    background: linear-gradient(#ff5a00, #cd0000);
-    color:white;
-}
-.btn-green {
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #3d8c39), color-stop(1.00, #203625));
-background: -webkit-linear-gradient(#3d8c39, #203625);
-background: -moz-linear-gradient(#3d8c39, #203625);
-background: -o-linear-gradient(#3d8c39, #203625);
-background: -ms-linear-gradient(#3d8c39, #203625);
-background: linear-gradient(#3d8c39, #203625);
-
-    color:white;
-}
 
 /* ヘルプページ */
 .help-area {

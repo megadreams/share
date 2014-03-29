@@ -249,7 +249,8 @@ class Controller_lendborrow extends Controller_Common
         $create         = \Input::post('create');
         
         if ($create !== null) {
-            $type         = \Input::post('type');
+            
+            $type         = \Input::post('type');            
             $your_user_id = \Input::post('your_user_id');
             $category     = \Input::post('category_mst_id');
             $date         = \Input::post('date');
@@ -311,6 +312,7 @@ class Controller_lendborrow extends Controller_Common
                     $your_user_id = $other_user->id;
                 }
             }
+            
             $ins_data = array();
             if ($type === 'lend') {
                 $ins_data['lend_user_id']   = $this->user_profile_id;
@@ -328,7 +330,6 @@ class Controller_lendborrow extends Controller_Common
             $ins_data['memo']     = $memo;
             $ins_data['owner_id'] = $this->user_profile_id;
             $ins_data['status']   = 0;
-            
             $mng = $this->model_wrap->getModelInstance('Model_Lend_And_Borrow_Mng', $ins_data);
             $mng->save();
             

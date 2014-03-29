@@ -50,7 +50,7 @@
             <table class="w90p mauto">
                 <tr>
                     <th>Facebook</th>
-                    <td>認証済み</td>
+                    <td><span class="color-red">認　証　済　み</span></td>
                 </tr>
                 <tr>
                     <th>Twitter</th>

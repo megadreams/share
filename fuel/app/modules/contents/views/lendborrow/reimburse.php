@@ -1,3 +1,54 @@
+<style>
+.number-btn {
+width: 60px;
+height: 60px;
+border-radius: 30px;
+box-shadow: 2px 2px 1px #808080;
+display: block;
+margin: 3px;
+line-height: 68px;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
+background: -webkit-linear-gradient(#efe457, #feae31);
+background: -moz-linear-gradient(#efe457, #feae31);
+background: -o-linear-gradient(#efe457, #feae31);
+background: -ms-linear-gradient(#efe457, #feae31);
+background: linear-gradient(#efe457, #feae31);
+
+color:black;
+}
+.btn-string {
+    width: 65px;
+    height: 50px;
+    border-radius: 22px;
+    box-shadow: 2px 2px 1px #808080;
+    display: block;
+    margin: 10px 0px;
+    line-height: 54px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
+    background: -webkit-linear-gradient(#efe457, #feae31);
+    background: -moz-linear-gradient(#efe457, #feae31);
+    background: -o-linear-gradient(#efe457, #feae31);
+    background: -ms-linear-gradient(#efe457, #feae31);
+    background: linear-gradient(#efe457, #feae31);
+
+    color:black;    
+}    
+.input-label {
+    font-size: 20px;
+    padding-top: 5px;    
+}
+.input-element {
+    font-size: 20px;
+    color:black;
+    text-align: right;
+}   
+</style>
+<?php echo Asset::css('picker/default.css'); ?>
+<?php echo Asset::css('picker/default.date.css'); ?>
+<?php echo Asset::css('picker/default.time.css'); ?>
+<?php echo Asset::js('picker/picker.js'); ?> 
+<?php echo Asset::js('picker/picker.date.js'); ?> 
+<?php echo Asset::js('picker/picker.time.js'); ?> 
     <header class="header float-area">
         <a class="non-decoration" href="<?php echo $view_data['base_url'] . 'lendborrow/list/'. $view_data['your_user_id']; ?>">
             <div class="header-back-btn float">
@@ -77,10 +128,10 @@
                 <?php endforeach; ?>
             <div class="float-area">
                 <div class="float w50p">
-                    <span class="pre-btn">前へ</span>
+                    <span class="pre-btn btn btn-gray">前へ</span>
                 </div>
                 <div class="float w50p">
-                    <span class="next-btn">次へ</span>
+                    <span class="next-btn btn btn-gray">次へ</span>
                 </div>
             </div>              
         </section>
@@ -98,21 +149,74 @@
             </div>
             <div class="create-input-box">
                 <div id="adjustment-input-money-view-on" class="input-box float-area">
-                    <span class="w30p float adjustment-input-text">
-                        受け取り金額
-                    </span>
-                    <input class="w60p text-right" type="tel" name="money" value="0">
+                    
+                    
+                    <div class="input-box float-area">
+                        <span class="w30p float adjustment-input-text input-label">
+                            精算額
+                        </span>
+                        <input class="w60p input-element" type="text" name="money" value="0">
+                    </div>
+                    <div style="margin-left: 15%;">
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">7</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">8</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">9</span>
+                            </div>
+                        </div>
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">4</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">5</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">6</span>
+                            </div>
+                        </div>                        
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">1</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">2</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="number-btn">3</span>
+                            </div>
+                        </div>                       
+                        <div class="float-area">
+                            <div class="w30p float">
+                                <span class="number-btn">0</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="btn-string number-clear">clear</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="btn-string number-regist">登録</span>
+                            </div>
+                        </div>                        
+                    </div>                    
+                    
                 </div>
+                
+                
                 <div id="adjustment-input-money-view-off" class="input-box float-area color-blue">
                     相殺されているため、<span class="newline">精算のみで支払いはありません。</span>
                 </div>
             </div>
             <div class="float-area">
                 <div class="float w50p">
-                    <span class="pre-btn">前へ</span>
+                    <span class="pre-btn btn btn-gray">前へ</span>
                 </div>
                 <div class="float w50p">
-                    <span class="next-btn">次へ</span>
+                    <span class="next-btn btn btn-gray">次へ</span>
                 </div>
             </div>          
         </section>
@@ -125,15 +229,15 @@
             <div class="create-friend-list">
                 <div class="input-box float-area">
                     <span class="w30p float">精算日</span>
-                    <input class="w60p text-right" type="date" name="date" value="<?php echo date('Y-m-d');?>">                        
+                    <input class="w60p text-right datepicker-date input-element" type="date" name="date" value="">
                 </div>
             </div>
-            <div class="float-area">
+            <div class="float-area m10">
                 <div class="float w50p">
-                    <span class="pre-btn">前へ</span>
+                    <span class="pre-btn btn btn-gray">前へ</span>
                 </div>
                 <div class="float w50p">
-                    <span class="next-btn">次へ</span>
+                    <span class="next-btn btn btn-gray">次へ</span>
                 </div>
             </div>                
         </section>
@@ -176,9 +280,14 @@
                     </td>
                 </tr>                
             </table>
-            <input type="hidden" name="receive_user_id" value="<?php echo $view_data['your_user_id'];?>";?>        
-            <input class="regist-btn" type="submit" name="create" value="登録">
-            <span class="newline">精算した際に、端数があれば端数差分を貸し借りに登録するか選択できる</span>
+            <div class="m15">
+                <input type="hidden" name="receive_user_id" value="<?php echo $view_data['your_user_id'];?>";?>        
+                <input class="regist-btn btn btn-orange" type="submit" name="create" value="登録">                
+            </div>
+            <p>
+                <span class="newline">精算した際に、端数があれば</span>            
+                <span class="newline">端数差分を貸し借りに登録するか選択できる</span>            
+            </p>
             
         </section>
             
@@ -243,7 +352,16 @@ $(function() {
 <script>
 
 $(function() {
-
+    $( '.datepicker-date' ).pickadate({
+        monthsFull: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        weekdaysShort: ['日', '月', '火', '水', '木', '金', '土'],
+        today: '本日',
+        clear: 'キャンセル',
+        format: 'yyyy/mm/dd',
+        formatSubmit: 'yyyy/mm/dd',
+        max: true
+    });
+    
     //サーバからデータをもらいましょう！
     var category_info;
     var user_friends_info;
@@ -291,6 +409,25 @@ $(function() {
        nowpage = next_page;
        changePage(tmp_pre_page, nowpage);        
     });
+
+
+    // 金額入力時の処理
+    $('.number-btn').bind('touchend',function() {
+        var num = Number($(this).text());
+        var money = Number($('input[name=money]').val());
+        if (!isFinite(money) || money === 0) {
+            money = '';
+        }
+        money = money + num.toString();
+        $('input[name=money]').val(money);
+    });
+    $('.number-clear').bind('touchend',function(){
+        inputDefaultText('input[name="money"]', '金額を入力');
+    });
+    $('.number-regist').bind('touchend',function() {
+        $($(".next-btn")[0]).trigger('click');
+    });
+
 
 
     //戻るボタン
@@ -424,7 +561,8 @@ function validationCheck(page) {
         }
     // 精算額
     } else if (page === 1) {
-        if (typeof　$('input[name="money"]').val() === "undefined") {
+        // 金額入力 数値のみ受付
+        if ($.isNumeric($("[name=money]").val()) === false) {
             return false;
         }
     // 精算日

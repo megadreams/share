@@ -35,13 +35,13 @@ background: linear-gradient(#efe457, #feae31);
 
 color:black;
 }
-.number-clear {
-    width: 120px;
+.btn-string {
+    width: 65px;
     height: 50px;
     border-radius: 22px;
     box-shadow: 2px 2px 1px #808080;
     display: block;
-    margin: 10px;
+    margin: 10px 0px;
     line-height: 54px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
     background: -webkit-linear-gradient(#efe457, #feae31);
@@ -53,7 +53,23 @@ color:black;
     color:black;
     
 }
+.input-label {
+    font-size: 20px;
+    padding-top: 5px;    
+}
+.input-element {
+    font-size: 20px;
+    color:black;
+    text-align: right;
+}
 </style>
+<?php echo Asset::css('picker/default.css'); ?>
+<?php echo Asset::css('picker/default.date.css'); ?>
+<?php echo Asset::css('picker/default.time.css'); ?>
+<?php echo Asset::js('picker/picker.js'); ?> 
+<?php echo Asset::js('picker/picker.date.js'); ?> 
+<?php echo Asset::js('picker/picker.time.js'); ?> 
+
 <header class="header float-area">
         <div class="head-left-btn cansel-btn float">
             キャンセル
@@ -71,6 +87,7 @@ color:black;
         <span id="step2" class="index-status">お相手</span> -> 
         <span id="step3" class="index-status">金額</span> -> 
         <span id="step4" class="index-status">日付</span> -> 
+        <span id="step4" class="index-status">期限</span> -> 
         <span id="step5" class="index-status">確認</span>
     </div>
     <form action="" method="POST">
@@ -101,7 +118,7 @@ color:black;
                         　
                     </div>
                     <div class="float w50p">
-                        <span class="next-btn">次へ</span>
+                        <span class="next-btn btn btn-gray">次へ</span>
                     </div>
                 </div>
             </section>
@@ -155,10 +172,10 @@ color:black;
                 </div>
                 <div class="float-area">
                     <div class="float w50p">
-                        <span class="pre-btn">前へ</span>
+                        <span class="pre-btn btn btn-gray">前へ</span>
                     </div>
                     <div class="float w50p">
-                        <span class="next-btn">次へ</span>
+                        <span class="next-btn btn btn-gray">次へ</span>
                     </div>
                 </div>                
             </section>
@@ -192,8 +209,8 @@ color:black;
                 </div>
                 <div class="create-input-box">
                     <div class="input-box float-area">
-                        <span class="w30p float">金額</span>
-                        <input class="w60p text-right" type="text" name="money" value="0">
+                        <span class="w30p float input-label">金額</span>
+                        <input class="w60p input-element" type="text" name="money" value="0" readonly="readonly">
                     </div>
                     <div style="margin-left: 15%;">
                         <div class="float-area">
@@ -233,20 +250,23 @@ color:black;
                             <div class="w30p float">
                                 <span class="number-btn">0</span>
                             </div>
-                            <div class="w60p float">
-                                <span class="number-clear">clear</span>
+                            <div class="w30p float">
+                                <span class="btn-string number-clear">clear</span>
+                            </div>
+                            <div class="w30p float">
+                                <span class="btn-string number-regist">登録</span>
                             </div>
                         </div>                        
                     </div>
                </div> 
-                <div class="float-area">
+               <div class="float-area">
                     <div class="float w50p">
-                        <span class="pre-btn">前へ</span>
+                        <span class="pre-btn btn btn-gray">前へ</span>
                     </div>
                     <div class="float w50p">
-                        <span class="next-btn">次へ</span>
+                        <span class="next-btn btn btn-gray">次へ</span>
                     </div>
-                </div>                
+               </div>                
             </section>
             
             <section class="create-view page non-display">
@@ -255,49 +275,109 @@ color:black;
                         貸し借りした日付を選択してください
                     </h1>
                 </header>
-                <div class="create-friend-list">
+                <div class="create-friend-list m10" style="margin: 20px 5px;">
                     <div class="input-box float-area">
-                        <span class="w30p float">貸借日</span>
-                        <input class="w60p text-right" type="date" name="date" value="<?php echo date('Y/m/d');?>">                        
+                        <span class="w30p input-label">貸借日</span>
+
+                        <input class="w60p text-right datepicker-date input-element" type="date" name="date" value="">
                     </div>
                 </div>
-                <div class="float-area">
+                <div class="float-area m10">
                     <div class="float w50p">
-                        <span class="pre-btn">前へ</span>
+                        <span class="pre-btn btn btn-gray">前へ</span>
                     </div>
                     <div class="float w50p">
-                        <span class="next-btn">次へ</span>
+                        <span class="next-btn btn btn-gray">次へ</span>
                     </div>
-                </div>                
+                </div>                    
             </section>
-
             <section class="create-view page non-display">
                 <header>
-                    <h1>
-                        <span class="newline">
-                            <span class="user-text"></span>さんに
-                        </span>
-                        <span class="newline">
-                            <span class="category-text"></span>を<span class="type-text"></span>いる
-                        </span>
+                    <h1 class="p10">
+                        貸し借り期限を設定しますか？
                     </h1>
-                </header>                                    
-                <div class="create-input-box">
-                   <span class="text-left">オプション</span>
-                    <div class="input-box float-area">
-                        <span class="w30p float">期限</span>
-                        <input class="w60p text-right" type="date" name="limit" value="0">
+                </header>
+                <div class="create-friend-list m10" style="padding:10px;">
+                    <div class="float w50p">
+                        <label>
+                            はい
+                            <input type="radio" name="limit-flg" value="yes">
+                        </label>
                     </div>
-                    <div class="input-box float-area">
-                        <span class="w30p float">メモ</span>
-                        <textarea class="w60p" name="memo"></textarea>
+                    <div class="float w50p">
+                        <label>
+                            <input type="radio" name="limit-flg" value="no" checked>
+                            いいえ
+                        </label>
                     </div>
+                </div>                
+                <div class="create-friend-list m10 limit-area hide"  style="margin: 20px 5px;">
+                    <span class="w30p input-label">期　限</span>
+                    <input class="w60p text-right datepicker-limit input-element" type="date" name="limit" value="">
                 </div>
-                <input type="hidden" name="add_your_user_name" value="">
-                <input class="regist-btn" type="submit" name="create" value="登録">
+                <div class="float-area m10">
+                    <div class="float w50p">
+                        <span class="pre-btn btn btn-gray">前へ</span>
+                    </div>
+                    <div class="float w50p">
+                        <span class="next-btn btn btn-gray">次へ</span>
+                    </div>
+                </div>                    
+            </section>                
+            
+            <!-- 確認画面 -->
+            <section class="create-view page non-display">
+                <header>
+                    <h1 class="m10">
+                        登録確認
+                    </h1>
+                </header>
+                <table class="lendborrow-table">
+                    <tr>
+                        <th>日付</th>
+                        <td>
+                            <span class="date-text"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><span class="type-text"></span>いる人</th>
+                        <td>
+                            <span class="user-text"></span>さん
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>金額</th>
+                        <td>
+                            <span class="money-text"></span>円
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>状態</th>
+                        <td>
+                            <span class="type-text"></span>いる
+                        </td>
+                    </tr>                       
+                    <tr>
+                        <th>返却期限</th>
+                        <td>
+                            <span class="limit-text"></span>
+                        </td>
+                    </tr>                       
+                    <tr>
+                        <th>メモ</th>
+                        <td>
+                            <textarea class="w90p" name="memo" rows="3" cols="30"></textarea>                        
+                        </td>
+                    </tr>                       
+                </table>        
+                                
+                <div class="m15">                    
+                    <input type="hidden" name="add_your_user_name" value="">
+                    <input class="regist-btn btn btn-orange" type="submit" name="create" value="登録">
+                </div>
                 <div class="float-area">
                     <div class="float w50p">
-                        <span class="pre-btn">前へ</span>
+                        <span class="pre-btn btn btn-gray">前へ</span>
                     </div>
                     <div class="float w50p">
                         　
@@ -329,13 +409,13 @@ color:black;
             </div>
             <div class="float-area hide">
                 <div class="w50p float sns-btn">
-                        <button class="w90p btn gray-btn">
+                        <button class="w90p btn btn-gray">
                             Google
                         </button>
                 </div>                     
 
                 <div class="w50p float sns-btn">
-                        <button class="w90p btn gray-btn">
+                        <button class="w90p btn btn-gray">
                             Yahoo!
                         </button>
                 </div>            
@@ -350,18 +430,32 @@ color:black;
         </div>
 
         <div>
-            <button id="close">clocse</button>        
+            <button id="close" class="btn btn-gray">閉じる</button>        
         </div>
     </div>
     
 <script>
 
 
-                
-
-                
 $(function() {
-
+    $( '.datepicker-date' ).pickadate({
+        monthsFull: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        weekdaysShort: ['日', '月', '火', '水', '木', '金', '土'],
+        today: '本日',
+        clear: 'キャンセル',
+        format: 'yyyy/mm/dd',
+        formatSubmit: 'yyyy/mm/dd',
+        max: true
+    });
+    $( '.datepicker-limit' ).pickadate({
+        monthsFull: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        weekdaysShort: ['日', '月', '火', '水', '木', '金', '土'],
+        today: '本日',
+        clear: 'キャンセル',
+        format: 'yyyy/mm/dd',
+        formatSubmit: 'yyyy/mm/dd'
+    });    
+    
     //サーバからデータをもらいましょう！
     var category_info;
     var user_friends_info;
@@ -382,6 +476,19 @@ $(function() {
         }
         $('input[name=type]:checked').trigger('click');        
     });
+    
+    $('input[name=limit-flg]').click(function(){
+        if ($(this).val() === 'yes') {
+            $('.limit-area').show();            
+        } else {
+            $('.limit-area').hide();
+        }
+    });
+        
+    
+
+
+
     //次のページへの遷移設定
     $(".next-btn").click(function() {
         // ページが変わる際には入力値チェックを行う
@@ -391,7 +498,7 @@ $(function() {
         }
         var tmp_page = nowpage;
         nowpage++;
-        changePage(tmp_page, nowpage);        
+        changePage(tmp_page, nowpage);
     });
 
     $('.index-status').click(function(){
@@ -467,6 +574,10 @@ $(function() {
     $('.number-clear').bind('touchend',function(){
         inputDefaultText('input[name="money"]', '金額を入力');
     });
+    $('.number-regist').bind('touchend',function() {
+        $($(".next-btn")[5]).trigger('click');
+    });
+
 
 
     $('.add-friends').click(function(){
@@ -567,8 +678,23 @@ function changePage(nowIndex,nextIindex) {
         var categoryId = $('input[name="category_mst_id"]').filter(':checked').val();
         var categoryName = $('#category-name'+categoryId).val();        
         $('.category-text').text(categoryName);
+    } else if (nextIindex === 5) {
+        // 金額の取得
+        var money_text = $('input[name=money]').val();
+        $('.money-text').text(money_text);
         
-    } 
+        // 貸借日の取得
+        var date_text = $('input[name=date]').val();
+        $('.date-text').text(date_text);
+
+        // 返却期限の有無
+        var limit_text = '設定なし';
+        if ($('input[name=limit-flg]:checked').val() === 'yes') {
+            var limit_text = $('input[name=limit]').val();
+        }
+        $('.limit-text').text(limit_text);
+        
+    }
     
     // nowPageを隠す
     console.log($('.page')[nowIndex]);
@@ -643,6 +769,14 @@ function validationCheck(page) {
         // 入力されていない場合
         if ($("[name=date]").val().length <= 0){
             return false;
+        }
+    // 期限選択
+    } else if (page === 4) {
+        // 入力されていない場合
+        if ($("[name=limit-flg]:checked").val() === 'yes') {
+            if ($("[name=limit]").val().length <= 0){
+                return false;
+            }
         }
     }
 

@@ -47,6 +47,7 @@
                         状態
                     </th>
                     <td>
+                        <?php /*
                         <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
                             <select name="status">
                                 <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
@@ -56,15 +57,29 @@
                                 <?php endforeach;?>
                             </select>   
                         <?php else: ?>
+                        */ ?>
                             <?php foreach ($view_data['lendborrow_status'][$view_data['type']] as $key => $value): ?>
                                 <?php if ((int)$view_data['lendborrow_data']['status'] === (int)$key):?>
                                     <?php echo $value; ?>
+                                    <input type="hidden" name="status" value="$view_data['lendborrow_data']['status']">
                                 <?php endif;?>
-                            <?php endforeach;?>                            
+                            <?php endforeach;?>
+                        <?php /*                        
                         <?php endif; ?>
+                        */ ?>
                         
                     </td>
-                </tr>          
+                </tr>
+                <tr>
+                    <th>返却期限</th>
+                    <td>
+                        <?php if ($view_data['lendborrow_data']['limit'] == 0): ?>
+                            設定なし
+                        <?php else:?>
+                            <?php echo $view_data['lendborrow_data']['limit'];?>
+                        <?php endif;?>
+                    </td>
+                </tr>                                       
                 <tr>
                     <th>
                         メモ
@@ -79,13 +94,13 @@
                 </tr>
             </table>
             <div>
-            <div>
+            <div class="m10">
                 <input type="hidden" name="your_user_id"   value="<?php echo $view_data['lendborrow_data']['user_id'];?> ">
                 <input type="hidden" name="id"   value="<?php echo $view_data['lendborrow_data']['id'];?>">
                 <input type="hidden" name="type" value="<?php echo $view_data['type'];?>">
                 <?php if ($view_data['lendborrow_data']['status'] == 0): ?>
-                    <button class="btn btn-blue" type="submit" name="edit">変更</button>
-                    <button class="btn btn-red" type="submit" name="delete">削除</button>
+                    <button class="btn btn-blue w40p" type="submit" name="edit">変更</button>
+                    <button class="btn btn-red w40p" type="submit" name="delete">削除</button>
                 <?php endif; ?>
             </div>
         </form>
@@ -106,7 +121,7 @@
                 </div>
             <?php endif;?>
          */ ?>
-        
+        <!--
         <div class="message-area">
             上記内容を以下のアプリで通知できます。
             <div class="m10 p5">
@@ -116,6 +131,7 @@
                 </script>
             </div>
         </div>
+        -->
         
     </section>
 

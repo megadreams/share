@@ -7,9 +7,11 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="apple-touch-startup-image" href="startup.png">
         <title>貸し借り管理</title>
-        <?php echo Asset::css('lendborrow-view.css');?>
     </head>
     <body>
+        <header>
+            
+        </header>
         <?php echo $content;?>
         <footer>
             <p>

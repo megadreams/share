@@ -1,0 +1,256 @@
+/* 共通で利用*/
+
+body {
+    width:100%;
+    margin:0px auto;
+    padding:0px;
+    text-align:center;
+    font-family: serif, 'webフォント';
+    font-size: 14px;        
+    margin-top:70px;
+    min-width:1024px;
+    
+}
+
+/* ページヘッダー*/
+header {
+    background: #6D4A37;
+    color:white;
+    height: 52px;
+    width:100%;
+    line-height: 48px;
+    font-size:150%;
+    position:fixed;
+    top:0px;    
+}
+
+/* フッター */
+footer {
+    background: #6D4A37;
+    color:white;
+    height: 52px;
+    width:100%;
+    line-height: 48px;
+    color:white;
+}
+footer a {
+    text-decoration: none;
+    color:white;
+}
+
+
+/* 回り込み設定 */ 
+.float{ float:left;}
+
+.float-area:after {
+    content: ""; 
+    display: block; 
+    height: 0; 
+    font-size:0;	
+    clear: both; 
+    visibility:hidden;
+}
+.text-left   { text-align:left;}
+.text-center { text-align:center;}
+.text-right  { text-align:right;}
+
+/* 余白設定 */
+.p5  { padding: 5px;}
+.p10 { padding:10px;}
+.p15 { padding:15px;}
+
+.m5  { margin: 5px;}
+.m10 { margin:10px;}
+.m15 { margin:15px;}
+
+/* 改行 */
+.newline { 
+    display:block;
+    line-height:140%;
+}
+
+/* float時の横幅指定 */
+.w10p { width:10%; }
+.w20p { width:20%; }
+.w30p { width:30%; }
+.w40p { width:40%; }
+.w49p { width:49%; }
+.w50p { width:50%; }
+.w60p { width:60%; }
+.w70p { width:70%; }
+.w80p { width:80%; }
+.w90p { width:90%; }
+.w100p { width:100%; }
+
+/* Viewの出し分け時に利用 */
+.hide { display:none;}
+.show { display:block;}
+
+
+
+/* スワイプ設定 */
+.swiper-container {
+    height:380px;
+    border:1px solid gray;
+    box-shadow:2px 2px 2px #808080;
+}
+
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background: #999;
+  box-shadow: 0px 1px 2px #555 inset;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+.swiper-active-switch {
+  background: #fff;
+}   
+
+.pagination {
+  position: absolute;
+  top: 340px;
+  z-index:10;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.main-view {
+    position: relative; 
+}
+
+
+
+
+.non-decoration {
+    text-decoration: none;
+}
+
+.display-none { display:none; }
+
+.color-red { color:red;}
+/* ボタンの設定 */
+.btn {
+    height: 44px;
+    font-size: 100%;
+    border-radius: 15px;
+}
+.btn-gray {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #fff), color-stop(1.00, #969696));
+    background: -webkit-linear-gradient(#fff, #969696);
+    background: -moz-linear-gradient(#fff, #969696);
+    background: -o-linear-gradient(#fff, #969696);
+    background: -ms-linear-gradient(#fff, #969696);
+    background: linear-gradient(#fff, #969696);
+    
+}
+.btn-green {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #2eeb25), color-stop(1.00, #266036));
+    background: -webkit-linear-gradient(#2eeb25, #266036);
+    background: -moz-linear-gradient(#2eeb25, #266036);
+    background: -o-linear-gradient(#2eeb25, #266036);
+    background: -ms-linear-gradient(#2eeb25, #266036);
+    background: linear-gradient(#2eeb25, #266036);
+}
+
+.btn-orange {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #f3ce00), color-stop(1.00, #ff7800));
+    background: -webkit-linear-gradient(#f3ce00, #ff7800);
+    background: -moz-linear-gradient(#f3ce00, #ff7800);
+    background: -o-linear-gradient(#f3ce00, #ff7800);
+    background: -ms-linear-gradient(#f3ce00, #ff7800);
+    background: linear-gradient(#f3ce00, #ff7800);
+    color:white;
+}
+
+.btn-yellow {
+    
+}
+.facebook-btn {
+    background: rgb(73, 96, 184);
+    color: white;
+}
+.twitter-btn {
+    background: rgb(37, 194, 233);
+    color: white;
+    
+}
+
+
+
+
+
+
+a {
+    text-decoration: none;
+}
+
+/* 色指定 */
+.color-red   { color:red; }
+.color-green { color:green; }
+.color-blue  { color:blue; }
+
+.text {
+    font-size:130%;
+    text-align:left;
+    margin:10px 30px;;
+}
+
+ul {
+    list-style:none;
+    margin: 0px;
+    padding: 0px;
+    z-index:10;
+}
+.reason {
+    border-radius:10px;
+    box-shadow:2px 2px 2px #808080;
+    padding:10px;
+    margin:10px auto;
+    width:80%;
+    height:120px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #efe457), color-stop(1.00, #feae31));
+    background: -webkit-linear-gradient(#efe457, #feae31);
+    background: -moz-linear-gradient(#efe457, #feae31);
+    background: -o-linear-gradient(#efe457, #feae31);
+    background: -ms-linear-gradient(#efe457, #feae31);
+    background: linear-gradient(#efe457, #feae31);
+    
+  
+}
+
+
+.section {
+    margin:10px auto; 
+    padding:20px 0px;
+}
+
+
+.reason-title {
+font-family:'Lucida Grande',
+ 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
+ Meiryo, メイリオ, sans-serif;    
+    font-size: 20px;
+}
+.reason-text {
+    font-size: 15px;
+    margin-top: 21px;
+}
+.line {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    box-shadow:0 1px 0 rgba(255,255,255,0.3);
+    width:90%;
+    margin:20px auto;
+}
+.gap {
+    color:rgb(255, 133, 0);
+    font-size:150%;
+}
+.important {
+    color:red;
+    font-size:200%;
+}

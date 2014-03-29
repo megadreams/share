@@ -85,6 +85,7 @@
                 現在<?php echo number_format(abs($view_data['lend_and_borrow_summary']['sum']));?>円 <?php echo $comment;?>ています。
             </div>
         <?php else: ?>
+            メニューより精算処理を行って下さい。
         <!--
             <div>
                 <span class="newline">現在貸し借りで、金額が相殺されています。</span>

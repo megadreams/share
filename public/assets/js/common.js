@@ -2,12 +2,8 @@ $(function(){
     window.addEventListener('load',function(){
          window.scrollTo(0, 1);
     },false);
-
     setTimeout("window.scrollTo(0,1)",500);
-    
-
 });
-
 
 
 //入力時にフォーカスを与える関数
