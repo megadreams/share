@@ -361,6 +361,18 @@ $(function() {
         formatSubmit: 'yyyy/mm/dd',
         max: true
     });
+    // 初期値を空にするため1秒後に実行
+    setTimeout(function(){
+        dd = new Date();
+        yy = dd.getYear();
+        mm = dd.getMonth() + 1;
+        dd = dd.getDate();
+        if (yy < 2000) { yy += 1900; }
+        if (mm < 10) { mm = "0" + mm; }
+        if (dd < 10) { dd = "0" + dd; }
+        $( '.datepicker-date' ).val(yy + "/" + mm + "/" + dd);
+        $( '.datepicker-date' ).attr("placeholder", yy + "/" + mm + "/" + dd);
+    }, 1);
     
     //サーバからデータをもらいましょう！
     var category_info;

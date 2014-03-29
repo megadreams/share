@@ -85,8 +85,8 @@
                         メモ
                     </th>
                     <td>
-                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>                        
-                            <textarea name="memo"><?php echo $view_data['lendborrow_data']['memo']; ?></textarea>                   
+                        <?php if ($view_data['lendborrow_data']['status'] == 0): ?>
+                            <textarea name="memo" maxlength="20"><?php echo $view_data['lendborrow_data']['memo']; ?></textarea>                   
                         <?php else: ?>
                             <?php echo $view_data['lendborrow_data']['memo']; ?>
                         <?php endif; ?>

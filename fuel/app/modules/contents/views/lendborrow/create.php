@@ -368,7 +368,7 @@ color:black;
                     <tr>
                         <th>メモ</th>
                         <td>
-                            <textarea class="w90p" name="memo" rows="3" cols="30"></textarea>                        
+                            <textarea class="w90p" name="memo" rows="3" cols="30" maxlength="20"></textarea>                        
                         </td>
                     </tr>                       
                 </table>        
@@ -460,7 +460,6 @@ $(function() {
     
     // 初期値を空にするため1秒後に実行
     setTimeout(function(){
-        $( '.datepicker-day' ).val("");
         dd = new Date();
         yy = dd.getYear();
         mm = dd.getMonth() + 1;
@@ -468,6 +467,7 @@ $(function() {
         if (yy < 2000) { yy += 1900; }
         if (mm < 10) { mm = "0" + mm; }
         if (dd < 10) { dd = "0" + dd; }
+        $( '.datepicker-day' ).val(yy + "/" + mm + "/" + dd);
         $( '.datepicker-day' ).attr("placeholder", yy + "/" + mm + "/" + dd);
         $( '.datepicker-limit' ).attr("placeholder", yy + "/" + mm + "/" + dd);
     }, 1);
@@ -580,7 +580,14 @@ $(function() {
     // 金額入力時の処理
     $('.number-btn').bind('touchend',function() {
         var num = Number($(this).text());
-        var money = Number($('input[name=money]').val());
+        
+        var text_num = $('input[name=money]').val();
+        if (text_num.length > 6) {
+            alert("これ以上は入力できません。");
+            return ;
+        }
+        
+        var money = Number(text_num);
         if (!isFinite(money) || money === 0) {
             money = '';
         }
