@@ -62,6 +62,9 @@ color:black;
     color:black;
     text-align: right;
 }
+.picker__button--clear {
+    visibility: hidden;
+}
 </style>
 <?php echo Asset::css('picker/default.css'); ?>
 <?php echo Asset::css('picker/default.date.css'); ?>
@@ -87,8 +90,8 @@ color:black;
         <span id="step2" class="index-status">お相手</span> -> 
         <span id="step3" class="index-status">金額</span> -> 
         <span id="step4" class="index-status">日付</span> -> 
-        <span id="step4" class="index-status">期限</span> -> 
-        <span id="step5" class="index-status">確認</span>
+        <span id="step5" class="index-status">期限</span> -> 
+        <span id="step6" class="index-status">確認</span>
     </div>
     <form action="" method="POST">
         <div class="create-view">
@@ -278,8 +281,7 @@ color:black;
                 <div class="create-friend-list m10" style="margin: 20px 5px;">
                     <div class="input-box float-area">
                         <span class="w30p input-label">貸借日</span>
-
-                        <input class="w60p text-right datepicker-date input-element" type="date" name="date" value="">
+                        <input class="w60p text-right datepicker-day input-element" type="date" name="date" value="">
                     </div>
                 </div>
                 <div class="float-area m10">
@@ -438,7 +440,7 @@ color:black;
 
 
 $(function() {
-    $( '.datepicker-date' ).pickadate({
+    $( '.datepicker-day' ).pickadate({
         monthsFull: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
         weekdaysShort: ['日', '月', '火', '水', '木', '金', '土'],
         today: '本日',
@@ -453,9 +455,23 @@ $(function() {
         today: '本日',
         clear: 'キャンセル',
         format: 'yyyy/mm/dd',
-        formatSubmit: 'yyyy/mm/dd'
-    });    
+        formatSubmit: 'yyyy/mm/dd',
+    });
     
+    // 初期値を空にするため1秒後に実行
+    setTimeout(function(){
+        $( '.datepicker-day' ).val("");
+        dd = new Date();
+        yy = dd.getYear();
+        mm = dd.getMonth() + 1;
+        dd = dd.getDate();
+        if (yy < 2000) { yy += 1900; }
+        if (mm < 10) { mm = "0" + mm; }
+        if (dd < 10) { dd = "0" + dd; }
+        $( '.datepicker-day' ).attr("placeholder", yy + "/" + mm + "/" + dd);
+        $( '.datepicker-limit' ).attr("placeholder", yy + "/" + mm + "/" + dd);
+    }, 1);
+
     //サーバからデータをもらいましょう！
     var category_info;
     var user_friends_info;
@@ -587,9 +603,7 @@ $(function() {
             
             alert('既に取得しています');
             return;
-        }
-        
-        
+        }        
             
         $.ajax({
             dataType: 'json',
