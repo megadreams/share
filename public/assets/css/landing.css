@@ -265,3 +265,12 @@ font-family:'Lucida Grande',
     cursor: pointer;
 
 }
+
+.userpolicy {
+    width:80%;
+    margin:10px auto;
+    padding:20px;
+    border:1px solid gray;
+    border-radius:10px;
+    box-shadow: 2px 2px 2px #808080;
+}
