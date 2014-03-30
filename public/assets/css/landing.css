@@ -21,14 +21,15 @@ header {
     line-height: 48px;
     font-size:150%;
     position:fixed;
-    top:0px;    
+    top:0px;  
+    z-index: 100;
 }
 
 /* フッター */
 footer {
     background: #6D4A37;
     color:white;
-    padding-top:15px;
+    padding:15px;
     width:100%;
 }
 footer a {
@@ -88,7 +89,7 @@ footer a {
 
 /* スワイプ設定 */
 .swiper-container {
-    height:380px;
+    height:440px;
     border:1px solid gray;
     box-shadow:2px 2px 2px #808080;
 }
@@ -100,7 +101,7 @@ footer a {
   border-radius: 10px;
   background: #999;
   box-shadow: 0px 1px 2px #555 inset;
-  margin: 0 3px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
@@ -110,7 +111,7 @@ footer a {
 
 .pagination {
   position: absolute;
-  top: 340px;
+  top: 410px;
   z-index:10;
   left: 0;
   text-align: center;
@@ -251,4 +252,16 @@ font-family:'Lucida Grande',
 .important {
     color:red;
     font-size:200%;
+}
+
+
+.description-area {
+    margin:10px 0px;
+    padding:10px 0px;
+}
+
+.login-text {
+    color:white;
+    cursor: pointer;
+
 }
