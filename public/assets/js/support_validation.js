@@ -1,5 +1,5 @@
 $(function(){
-    $(window).ready(function () {
+    $(window).load(function () {
         $("form").each(function() {
           this.reset();
         });        
