@@ -18,18 +18,18 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="apple-touch-startup-image" href="startup.png">
-        <link rel="stylesheet" href="assets/css/idangerous.swiper.css">
-        <link rel="stylesheet" href="assets/css/landing.css">
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/idangerous.swiper-2.1.min.js"></script>
-        <title>運営 | 貸し借り管理</title>
+        <link rel="stylesheet" href="/assets/css/idangerous.swiper.css">
+        <link rel="stylesheet" href="/assets/css/landing.css">
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/idangerous.swiper-2.1.min.js"></script>
+        <title>お問い合わせ | 貸し借り管理</title>
     </head>
     
     <body>
         <header class="float-area text-left">
             <div class="float" style="width:7%">
                 <a href="/" style="color:white;">
-                    <img src="assets/img/logo.png" alt="ロゴ" width="40" style="padding-top: 8px;opacity: 0.6;">
+                    <img src="/assets/img/logo.png" alt="ロゴ" width="40" style="padding-top: 8px;opacity: 0.6;">
                 </a>
             </div>
             <div class="float w70p">
@@ -39,33 +39,19 @@
                 <a href="/contents/auth/" class="login-text">ログイン</a>
             </div>
         </header>
-        <section class="main-view text-left userpolicy">
-            <h1>運営について</h1>
+        <section class="main-view text-center userpolicy">
+            <h1>お問い合わせを受け付けました</h1>
             <section>
-                <p>
-                    かしかり管理は、現在個人で運用しております。<br>
-                    お問い合わせなど個人で全て対応致しておりますので、返信が遅くなる可能性がございます。<br>
-                    予めご了承下さい。<br>
-                </p>
-            </section>
-            <section>
-                <h2>お問い合わせ</h2>
                 <div>
-                    ご意見、ご感想、その他お問い合わせに関しては、<a href="support.html">お問い合わせページ</a>よりご連絡下さい。
+                    受付ID【<span class="color-red"><?php echo $support_num;?></span>】
                 </div>
-            </section>
-            <section>
-                <h2>公式アカウント</h2>
-                <div>
-                    各種SNSの公式ページを用意しております。各種情報を提供しておりますのでぜひ御覧ください。<br>
+                <div class="m10">
+                    お問い合わせありがとうございます。<br>
+                    ご登録頂いたメールアドレスに<br>
+                    確認メールを送信させて頂いております。<br>
                 </div>
-                <div class="float-area m10">
-                    <div class="float w30p">
-                        <a href="https://www.facebook.com/kashikarikanri">Facebook公式ページ</a>
-                    </div>
-                    <div class="float w30p">
-                        <a href="https://twitter.com/kashikari_kanri">Twitter公式ページ</a>
-                    </div>
+                <div class="m10">
+                    1週間を目安にご対応させて頂きます。
                 </div>
             </section>
         </section>
@@ -74,20 +60,20 @@
             <div class="float w50p text-center">
                 <ul class="float-area">
                     <li class="float w20p">
-                        <a href="index.html">トップ</a>
+                        <a href="/index.html">トップ</a>
                     </li>
                     
                     <li class="float w20p">
-                        <a href="userpolicy.html">利用規約</a>
+                        <a href="/userpolicy.html">利用規約</a>
                     </li>
                     <li class="float w30p">
-                        <a href="privacypolicy.html">プライバシーポリシー</a>　
+                        <a href="/privacypolicy.html">プライバシーポリシー</a>　
                     </li>
                     <li class="float w20p">
-                        <a href="administer.html">運営</a>　
+                        <a href="/administer.html">運営</a>　
                     </li>
                     <li class="float w20p">
-                        <a href="support.html">お問い合わせ</a>　
+                        <a href="/support.html">お問い合わせ</a>　
                     </li>
                 </ul>
             </div>
@@ -115,15 +101,15 @@
                 </small>
             </div>
         </footer>       
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-37618383-2', 'kashikari.asia');
-  ga('send', 'pageview');
+          ga('create', 'UA-37618383-2', 'kashikari.asia');
+          ga('send', 'pageview');
 
-</script>
+        </script>
     </body>
 </html>
