@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
+<url>
+  <loc>http://kashikari.asia/</loc>
+  <priority>1.0</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/contents/auth/</loc>
+  <priority>0.8</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/index.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/usepolicy.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/privacypolicy.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/administer.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://kashikari.asia/support.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2014-04-06T23:21:07+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+</urlset>
