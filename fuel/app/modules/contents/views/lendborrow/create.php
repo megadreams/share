@@ -599,7 +599,14 @@ $(function() {
         inputDefaultText('input[name="money"]', '金額を入力');
     });
     $('.number-regist').bind('touchend',function() {
-        $($(".next-btn")[5]).trigger('click');
+        // ページが変わる際には入力値チェックを行う
+        if (validationCheck(nowpage) === false){
+            alert("データを入力してください");
+            return false;
+        }
+        var tmp_page = nowpage;
+        nowpage++;
+        changePage(tmp_page, nowpage);
     });
 
 
@@ -684,7 +691,7 @@ function changePage(nowIndex,nextIindex) {
         } else if (type === 'borrow') {
             text = '借りて';
         }
-        console.log(text);
+//        console.log(text);
         $('.type-text').text(text);
     } else if (nextIindex === 2) {
         //ユーザ名の取得
@@ -719,8 +726,8 @@ function changePage(nowIndex,nextIindex) {
     }
     
     // nowPageを隠す
-    console.log($('.page')[nowIndex]);
-    console.log($('.page')[nextIindex]);
+//    console.log($('.page')[nowIndex]);
+//    console.log($('.page')[nextIindex]);
 
 
     // 今のページが非表示じゃなかったら非表示にする
